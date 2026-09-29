@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazo va Vaqt - 7-sinf Fizika Simulyatsiyasi</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --card-border: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-x: #ef4444;
+            --accent-y: #22c55e;
+            --accent-z: #3b82f6;
+            --accent-gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            color: #38bdf8;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            background-color: #020617;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            overflow: hidden;
+        }
+
+        canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .controls {
+            margin-top: 20px;
+            background: rgba(15, 23, 42, 0.6);
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+        }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .slider-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .slider-group label {
+            width: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .slider-group input[type="range"] {
+            flex: 1;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .slider-val {
+            width: 80px;
+            text-align: right;
+            font-family: monospace;
+            font-size: 1rem;
+            color: #38bdf8;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary { background: #2563eb; color: white; }
+        .btn-primary:hover { background: #1d4ed8; }
+        .btn-warning { background: #f59e0b; color: white; }
+        .btn-warning:hover { background: #d97706; }
+        .btn-danger { background: #ef4444; color: white; }
+        .btn-danger:hover { background: #dc2626; }
+        .btn-secondary { background: #475569; color: white; }
+        .btn-secondary:hover { background: #334155; }
+
+        .info-panel {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 10px;
+            background: #020617;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
+            font-family: monospace;
+            font-size: 0.95rem;
+        }
+
+        .info-box {
+            text-align: center;
+        }
+
+        .info-box span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+            font-family: -apple-system, sans-serif;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .hint-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.6);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Fazo va Vaqt Simulyatsiyasi</h1>
+        <p>7-sinf fizika darsi uchun interaktiv ko'rgazmali qurol</p>
+    </header>
+
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab(1)">1. Fazoning Cheksizligi</button>
+        <button class="tab-btn" onclick="switchTab(2)">2. 3D Koordinatalar</button>
+        <button class="tab-btn" onclick="switchTab(3)">3. Vaqt O'qi</button>
+    </div>
+
+    <!-- TAB 1: SCALE OF SPACE -->
+    <div id="tab1" class="tab-content active">
+        <div class="canvas-container">
+            <canvas id="canvasScale"></canvas>
+        </div>
+        <div class="controls">
+            <div class="slider-group">
+                <label>Masshtab:</label>
+                <input type="range" id="scaleSlider" min="0" max="100" value="50" oninput="updateScale()">
+                <div class="slider-val" id="scaleValText">1 m</div>
+            </div>
+            <div class="info-panel">
+                <div class="info-box">
+                    <span>Bosqich:</span>
+                    <strong id="scaleName" style="color: #38bdf8;">Inson (Kundalik olam)</strong>
+                </div>
+                <div class="info-box">
+                    <span>Taqribiy o'lcham:</span>
+                    <strong id="scaleSize">10⁰ m (1 metr)</strong>
+                </div>
+                <div class="info-box">
+                    <span>Olam turi:</span>
+                    <strong id="scaleType" style="color: #4ade80;">Makrodunyo</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 2: 3D COORDINATES -->
+    <div id="tab2" class="tab-content">
+        <div class="canvas-container">
+            <div class="hint-overlay">Sichqoncha bilan 3D fazoni burishingiz mumkin</div>
+            <canvas id="canvas3D"></canvas>
+        </div>
+        <div class="controls">
+            <div class="slider-group">
+                <label style="color: var(--accent-x)">X o'qi (Eni):</label>
+                <input type="range" id="sliderX" min="-5" max="5" step="0.1" value="2" oninput="update3D()">
+                <div class="slider-val" id="valX">2.0</div>
+            </div>
+            <div class="slider-group">
+                <label style="color: var(--accent-y)">Y o'qi (Balandlik):</label>
+                <input type="range" id="sliderY" min="-5" max="5" step="0.1" value="3" oninput="update3D()">
+                <div class="slider-val" id="valY">3.0</div>
+            </div>
+            <div class="slider-group">
+                <label style="color: var(--accent-z)">Z o'qi (Chuqurlik):</label>
+                <input type="range" id="sliderZ" min="-5" max="5" step="0.1" value="2" oninput="update3D()">
+                <div class="slider-val" id="valZ">2.0</div>
+            </div>
+            <div class="info-panel">
+                <div class="info-box" style="grid-column: span 3;">
+                    <span>Fazodagi Nuqta Koordinatasi:</span>
+                    <strong id="coordText" style="color: #f59e0b; font-size: 1.2rem;">P(2.0, 3.0, 2.0)</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: 1D TIME AXIS -->
+    <div id="tab3" class="tab-content">
+        <div class="canvas-container">
+            <canvas id="canvasTime"></canvas>
+        </div>
+        <div class="controls">
+            <div class="btn-group">
+                <button class="btn btn-primary" id="btnStart" onclick="startTime()">Start ▶</button>
+                <button class="btn btn-warning" id="btnPause" onclick="pauseTime()">Pause ❚❚</button>
+                <button class="btn btn-danger" onclick="resetTime()">Reset ↺</button>
+                <button class="btn btn-secondary" onclick="markT1()">t1 ni belgilash</button>
+                <button class="btn btn-secondary" onclick="markT2()">t2 ni belgilash</button>
+            </div>
+            <div class="info-panel">
+                <div class="info-box">
+                    <span>Hozirgi vaqt (t):</span>
+                    <strong id="timeCurrent" style="color: #38bdf8;">0.0 s</strong>
+                </div>
+                <div class="info-box">
+                    <span>Nuqta t1:</span>
+                    <strong id="timeT1" style="color: #a855f7;">-- s</strong>
+                </div>
+                <div class="info-box">
+                    <span>Nuqta t2:</span>
+                    <strong id="timeT2" style="color: #ec4899;">-- s</strong>
+                </div>
+                <div class="info-box">
+                    <span>Vaqt oralig'i (Δt):</span>
+                    <strong id="timeDelta" style="color: #4ade80;">-- s</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Tab switching logic
+    let activeTab = 1;
+    function switchTab(tabIndex) {
+        activeTab = tabIndex;
+        document.querySelectorAll('.tab-btn').forEach((btn, idx) => {
+            btn.classList.toggle('active', idx + 1 === tabIndex);
+        });
+        document.querySelectorAll('.tab-content').forEach((content, idx) => {
+            content.classList.toggle('active', idx + 1 === tabIndex);
+        });
+        resizeCanvases();
+    }
+
+    // Canvas size handler
+    function resizeCanvases() {
+        [cScale, c3d, cTime].forEach(canvas => {
+            if (canvas && canvas.parentElement) {
+                canvas.width = canvas.parentElement.clientWidth;
+                canvas.height = canvas.parentElement.clientHeight;
+            }
+        });
+    }
+
+    window.addEventListener('resize', resizeCanvases);
+
+    // ==========================================
+    // MODULE 1: SCALE OF SPACE
+    // ==========================================
+    const cScale = document.getElementById('canvasScale');
+    const ctxScale = cScale.getContext('2d');
+    let scaleVal = 50;
+
+    const scaleLevels = [
+        { pct: 0, name: "Atom va Yadro", size: "10⁻¹⁰ m", type: "Mikrodunyo", color: "#60a5fa" },
+        { pct: 25, name: "Hujayra (Biologik)", size: "10⁻⁵ m", type: "Mikrodunyo", color: "#4ade80" },
+        { pct: 50, name: "Inson (Kundalik olam)", size: "1 m", type: "Makrodunyo", color: "#facc15" },
+        { pct: 75, name: "Yer Sayyorasi", size: "10⁷ m", type: "Megaolam", color: "#38bdf8" },
+        { pct: 100, name: "Sut Yo'li Galaktikasi", size: "10²¹ m", type: "Megaolam", color: "#c084fc" }
+    ];
+
+    function updateScale() {
+        scaleVal = parseFloat(document.getElementById('scaleSlider').value);
+        let currentLevel = scaleLevels[0];
+        for (let i = scaleLevels.length - 1; i >= 0; i--) {
+            if (scaleVal >= scaleLevels[i].pct) {
+                currentLevel = scaleLevels[i];
+                break;
+            }
+        }
+        document.getElementById('scaleName').innerText = currentLevel.name;
+        document.getElementById('scaleName').style.color = currentLevel.color;
+        document.getElementById('scaleSize').innerText = currentLevel.size;
+        document.getElementById('scaleValText').innerText = currentLevel.size;
+        document.getElementById('scaleType').innerText = currentLevel.type;
+    }
+
+    let angleScale = 0;
+    function drawScaleModule() {
+        ctxScale.clearRect(0, 0, cScale.width, cScale.height);
+        const cx = cScale.width / 2;
+        const cy = cScale.height / 2;
+        angleScale += 0.02;
+
+        if (scaleVal < 20) {
+            // ATOM
+            const radius = 60 + (scaleVal) * 2;
+            ctxScale.beginPath();
+            ctxScale.arc(cx, cy, 15, 0, Math.PI * 2);
+            ctxScale.fillStyle = '#ef4444';
+            ctxScale.fill();
+            
+            // Orbit 1
+            ctxScale.beginPath();
+            ctxScale.ellipse(cx, cy, radius, radius * 0.4, angleScale, 0, Math.PI * 2);
+            ctxScale.strokeStyle = 'rgba(96, 165, 250, 0.6)';
+            ctxScale.lineWidth = 2;
+            ctxScale.stroke();
+            
+            // Electron 1
+            let ex = cx + Math.cos(angleScale * 3) * radius;
+            let ey = cy + Math.sin(angleScale * 3) * radius * 0.4;
+            ctxScale.beginPath();
+            ctxScale.arc(ex, ey, 6, 0, Math.PI * 2);
+            ctxScale.fillStyle = '#60a5fa';
+            ctxScale.fill();
+
+        } else if (scaleVal < 40) {
+            // CELL
+            ctxScale.beginPath();
+            ctxScale.ellipse(cx, cy, 80, 60, Math.sin(angleScale*0.5)*0.1, 0, Math.PI * 2);
+            ctxScale.fillStyle = 'rgba(74, 222, 128, 0.2)';
+            ctxScale.strokeStyle = '#4ade80';
+            ctxScale.lineWidth = 3;
+            ctxScale.fill();
+            ctxScale.stroke();
+
+            // Nucleus
+            ctxScale.beginPath();
+            ctxScale.arc(cx - 10, cy - 5, 25, 0, Math.PI * 2);
+            ctxScale.fillStyle = 'rgba(168, 85, 247, 0.6)';
+            ctxScale.fill();
+
+        } else if (scaleVal < 60) {
+            // HUMAN (STICK FIGURE)
+            ctxScale.strokeStyle = '#facc15';
+            ctxScale.lineWidth = 4;
+            ctxScale.beginPath();
+            // Head
+            ctxScale.arc(cx, cy - 60, 20, 0, Math.PI * 2);
+            // Body
+            ctxScale.moveTo(cx, cy - 40);
+            ctxScale.lineTo(cx, cy + 30);
+            // Arms
+            ctxScale.moveTo(cx - 35, cy - 10);
+            ctxScale.lineTo(cx + 35, cy - 10);
+            // Legs
+            ctxScale.moveTo(cx, cy + 30);
+            ctxScale.lineTo(cx - 25, cy + 80);
+            ctxScale.moveTo(cx, cy + 30);
+            ctxScale.lineTo(cx + 25, cy + 80);
+            ctxScale.stroke();
+
+        } else if (scaleVal < 85) {
+            // EARTH
+            ctxScale.beginPath();
+            ctxScale.arc(cx, cy, 80, 0, Math.PI * 2);
+            ctxScale.fillStyle = '#1d4ed8';
+            ctxScale.fill();
+            ctxScale.strokeStyle = '#38bdf8';
+            ctxScale.lineWidth = 3;
+            ctxScale.stroke();
+
+            // Continents simple simulation
+            ctxScale.fillStyle = '#22c55e';
+            ctxScale.beginPath();
+            ctxScale.arc(cx - 20, cy - 20, 30, 0, Math.PI * 2);
+            ctxScale.arc(cx + 30, cy + 10, 25, 0, Math.PI * 2);
+            ctxScale.fill();
+
+        } else {
+            // GALAXY
+            ctxScale.save();
+            ctxScale.translate(cx, cy);
+            ctxScale.rotate(angleScale * 0.2);
+            for (let i = 0; i < 150; i++) {
+                let dist = i * 0.8;
+                let ang = i * 0.15;
+                let x = Math.cos(ang) * dist * 1.5;
+                let y = Math.sin(ang) * dist * 1.5;
+                ctxScale.fillStyle = i % 2 === 0 ? '#c084fc' : '#e879f9';
+                ctxScale.fillRect(x, y, 2.5, 2.5);
+                ctxScale.fillRect(-x, -y, 2.5, 2.5);
+            }
+            ctxScale.restore();
+        }
+    }
+
+    // ==========================================
+    // MODULE 2: 3D COORDINATES
+    // ==========================================
+    const c3d = document.getElementById('canvas3D');
+    const ctx3d = c3d.getContext('2d');
+
+    let posX = 2.0, posY = 3.0, posZ = 2.0;
+    let rotAngleX = 0.4, rotAngleY = 0.6;
+    let isDragging = false, lastMouseX = 0, lastMouseY = 0;
+
+    c3d.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => isDragging = false);
+
+    c3d.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        let dx = e.clientX - lastMouseX;
+        let dy = e.clientY - lastMouseY;
+        rotAngleY += dx * 0.01;
+        rotAngleX += dy * 0.01;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+    });
+
+    function update3D() {
+        posX = parseFloat(document.getElementById('sliderX').value);
+        posY = parseFloat(document.getElementById('sliderY').value);
+        posZ = parseFloat(document.getElementById('sliderZ').value);
+
+        document.getElementById('valX').innerText = posX.toFixed(1);
+        document.getElementById('valY').innerText = posY.toFixed(1);
+        document.getElementById('valZ').innerText = posZ.toFixed(1);
+        document.getElementById('coordText').innerText = `P(${posX.toFixed(1)}, ${posY.toFixed(1)}, ${posZ.toFixed(1)})`;
+    }
+
+    function project3D(x, y, z, cx, cy) {
+        let scale = 25;
+        // Rotate around Y
+        let x1 = x * Math.cos(rotAngleY) + z * Math.sin(rotAngleY);
+        let z1 = -x * Math.sin(rotAngleY) + z * Math.cos(rotAngleY);
+        // Rotate around X
+        let y2 = y * Math.cos(rotAngleX) - z1 * Math.sin(rotAngleX);
+        let z2 = y * Math.sin(rotAngleX) + z1 * Math.cos(rotAngleX);
+
+        return {
+            px: cx + x1 * scale,
+            py: cy - y2 * scale
+        };
+    }
+
+    function draw3DModule() {
+        ctx3d.clearRect(0, 0, c3d.width, c3d.height);
+        const cx = c3d.width / 2;
+        const cy = c3d.height / 2 + 20;
+
+        // Origin
+        const origin = project3D(0, 0, 0, cx, cy);
+
+        // Axes limits
+        const axisX = project3D(6, 0, 0, cx, cy);
+        const axisY = project3D(0, 6, 0, cx, cy);
+        const axisZ = project3D(0, 0, 6, cx, cy);
+
+        // Draw Axes
+        function drawLine(p1, p2, color, width = 2, dash = []) {
+            ctx3d.save();
+            ctx3d.beginPath();
+            ctx3d.setLineDash(dash);
+            ctx3d.moveTo(p1.px, p1.py);
+            ctx3d.lineTo(p2.px, p2.py);
+            ctx3d.strokeStyle = color;
+            ctx3d.lineWidth = width;
+            ctx3d.stroke();
+            ctx3d.restore();
+        }
+
+        // Main Axes
+        drawLine(origin, axisX, '#ef4444', 2.5); // X Red
+        drawLine(origin, axisY, '#22c55e', 2.5); // Y Green
+        drawLine(origin, axisZ, '#3b82f6', 2.5); // Z Blue
+
+        // Labels
+        ctx3d.fillStyle = '#ef4444'; ctx3d.fillText('X', axisX.px + 5, axisX.py);
+        ctx3d.fillStyle = '#22c55e'; ctx3d.fillText('Y', axisY.px, axisY.py - 5);
+        ctx3d.fillStyle = '#3b82f6'; ctx3d.fillText('Z', axisZ.px - 10, axisZ.py + 10);
+
+        // Target Point projections
+        const ptP = project3D(posX, posY, posZ, cx, cy);
+        const ptX = project3D(posX, 0, 0, cx, cy);
+        const ptY = project3D(0, posY, 0, cx, cy);
+        const ptZ = project3D(0, 0, posZ, cx, cy);
+        const ptXZ = project3D(posX, 0, posZ, cx, cy);
+
+        // Projection dashed lines
+        drawLine(ptX, ptXZ, '#ef4444', 1, [4, 4]);
+        drawLine(ptZ, ptXZ, '#3b82f6', 1, [4, 4]);
+        drawLine(ptXZ, ptP, '#22c55e', 1, [4, 4]);
+
+        // Point P
+        ctx3d.beginPath();
+        ctx3d.arc(ptP.px, ptP.py, 7, 0, Math.PI * 2);
+        ctx3d.fillStyle = '#f59e0b';
+        ctx3d.fill();
+        ctx3d.strokeStyle = '#ffffff';
+        ctx3d.lineWidth = 1.5;
+        ctx3d.stroke();
+
+        // Label P
+        ctx3d.fillStyle = '#f59e0b';
+        ctx3d.font = 'bold 12px sans-serif';
+        ctx3d.fillText(`P(${posX.toFixed(1)}, ${posY.toFixed(1)}, ${posZ.toFixed(1)})`, ptP.px + 10, ptP.py - 5);
+    }
+
+    // ==========================================
+    // MODULE 3: 1D TIME AXIS
+    // ==========================================
+    const cTime = document.getElementById('canvasTime');
+    const ctxTime = cTime.getContext('2d');
+
+    let currentTime = 0;
+    let isRunning = false;
+    let t1 = null, t2 = null;
+    let lastAnimFrameTime = null;
+
+    function startTime() {
+        if (!isRunning) {
+            isRunning = true;
+            lastAnimFrameTime = performance.now();
+        }
+    }
+
+    function pauseTime() {
+        isRunning = false;
+    }
+
+    function resetTime() {
+        isRunning = false;
+        currentTime = 0;
+        t1 = null;
+        t2 = null;
+        updateTimeUI();
+    }
+
+    function markT1() {
+        t1 = currentTime;
+        updateTimeUI();
+    }
+
+    function markT2() {
+        t2 = currentTime;
+        updateTimeUI();
+    }
+
+    function updateTimeUI() {
+        document.getElementById('timeCurrent').innerText = currentTime.toFixed(1) + ' s';
+        document.getElementById('timeT1').innerText = t1 !== null ? t1.toFixed(1) + ' s' : '-- s';
+        document.getElementById('timeT2').innerText = t2 !== null ? t2.toFixed(1) + ' s' : '-- s';
+
+        if (t1 !== null && t2 !== null) {
+            let dt = Math.abs(t2 - t1);
+            document.getElementById('timeDelta').innerText = dt.toFixed(1) + ' s';
+        } else {
+            document.getElementById('timeDelta').innerText = '-- s';
+        }
+    }
+
+    function drawTimeModule(now) {
+        if (isRunning) {
+            if (lastAnimFrameTime) {
+                let dt = (now - lastAnimFrameTime) / 1000;
+                currentTime += dt;
+                if (currentTime > 20) currentTime = 0; // Loop max 20s
+            }
+            lastAnimFrameTime = now;
+            updateTimeUI();
+        }
+
+        ctxTime.clearRect(0, 0, cTime.width, cTime.height);
+
+        const margin = 50;
+        const startX = margin;
+        const endX = cTime.width - margin;
+        const axisY = cTime.height / 2;
+        const maxT = 20; // 20 seconds scale
+
+        // Time Axis Line
+        ctxTime.beginPath();
+        ctxTime.moveTo(startX, axisY);
+        ctxTime.lineTo(endX, axisY);
+        ctxTime.strokeStyle = '#38bdf8';
+        ctxTime.lineWidth = 3;
+        ctxTime.stroke();
+
+        // Arrow head
+        ctxTime.beginPath();
+        ctxTime.moveTo(endX, axisY);
+        ctxTime.lineTo(endX - 10, axisY - 6);
+        ctxTime.lineTo(endX - 10, axisY + 6);
+        ctxTime.fillStyle = '#38bdf8';
+        ctxTime.fill();
+
+        ctxTime.fillStyle = '#38bdf8';
+        ctxTime.font = 'bold 14px sans-serif';
+        ctxTime.fillText('t (vaqt, s)', endX - 40, axisY + 30);
+
+        // Ticks
+        for (let i = 0; i <= maxT; i += 2) {
+            let px = startX + (i / maxT) * (endX - startX);
+            ctxTime.beginPath();
+            ctxTime.moveTo(px, axisY - 6);
+            ctxTime.lineTo(px, axisY + 6);
+            ctxTime.strokeStyle = '#64748b';
+            ctxTime.lineWidth = 2;
+            ctxTime.stroke();
+
+            ctxTime.fillStyle = '#94a3b8';
+            ctxTime.font = '11px sans-serif';
+            ctxTime.fillText(i + 's', px - 8, axisY + 20);
+        }
+
+        // Draw t1 marker
+        if (t1 !== null) {
+            let p1x = startX + (t1 / maxT) * (endX - startX);
+            ctxTime.beginPath();
+            ctxTime.arc(p1x, axisY, 6, 0, Math.PI * 2);
+            ctxTime.fillStyle = '#a855f7';
+            ctxTime.fill();
+            ctxTime.fillText(`t1 (${t1.toFixed(1)}s)`, p1x - 15, axisY - 15);
+        }
+
+        // Draw t2 marker
+        if (t2 !== null) {
+            let p2x = startX + (t2 / maxT) * (endX - startX);
+            ctxTime.beginPath();
+            ctxTime.arc(p2x, axisY, 6, 0, Math.PI * 2);
+            ctxTime.fillStyle = '#ec4899';
+            ctxTime.fill();
+            ctxTime.fillText(`t2 (${t2.toFixed(1)}s)`, p2x - 15, axisY - 15);
+        }
+
+        // Active Object Position
+        let objX = startX + (currentTime / maxT) * (endX - startX);
+        ctxTime.beginPath();
+        ctxTime.arc(objX, axisY, 10, 0, Math.PI * 2);
+        ctxTime.fillStyle = '#f59e0b';
+        ctxTime.fill();
+        ctxTime.strokeStyle = '#ffffff';
+        ctxTime.lineWidth = 2;
+        ctxTime.stroke();
+
+        // Label above object
+        ctxTime.fillStyle = '#f59e0b';
+        ctxTime.font = 'bold 12px sans-serif';
+        ctxTime.fillText(`${currentTime.toFixed(1)}s`, objX - 12, axisY - 20);
+    }
+
+    // MAIN ANIMATION LOOP
+    function animate(now) {
+        if (activeTab === 1) drawScaleModule();
+        else if (activeTab === 2) draw3DModule();
+        else if (activeTab === 3) drawTimeModule(now);
+
+        requestAnimationFrame(animate);
+    }
+
+    // Init
+    resizeCanvases();
+    updateScale();
+    update3D();
+    requestAnimationFrame(animate);
+</script>
+</body>
+</html>
