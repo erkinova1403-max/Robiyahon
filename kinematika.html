@@ -1,0 +1,125 @@
+<!DOCTYPE html><html lang="uz"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>Kinematikaning asosiy tushunchalari</title>
+<style>
+:root{--bg:#eef4fb;--c:#fff;--t:#1b2a3d;--m:#546579;--p:#2563eb;--g:#16a34a;--r:#dc2626;--o:#f59e0b;--l:#d5e0ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1726;--c:#1a2638;--t:#e8eef7;--m:#9fb0c6;--l:#2c3b52}}
+:root[data-theme="dark"]{--bg:#0e1726;--c:#1a2638;--t:#e8eef7;--m:#9fb0c6;--l:#2c3b52}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.55 "Trebuchet MS",Verdana,sans-serif}
+header{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:22px 16px}
+header h1{margin:0;font-size:1.45rem}header p{margin:6px 0 0;opacity:.9}
+main{max-width:720px;margin:auto;padding:12px}
+section{background:var(--c);border-radius:16px;padding:16px;margin:14px 0;border:1px solid var(--l)}
+h2{margin:0 0 8px;font-size:1.25rem;color:var(--p)}h3{margin:14px 0 6px;font-size:1.02rem}
+.ex{display:grid;gap:8px}.ex div{background:var(--bg);border-left:5px solid var(--o);padding:8px 10px;border-radius:8px}
+canvas{width:100%;height:auto;border-radius:12px;border:2px solid var(--l);background:#fff;display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+button{flex:1;min-width:96px;border:0;border-radius:12px;padding:14px 8px;font:inherit;font-weight:700;color:#fff;cursor:pointer}
+.go{background:var(--g)}.st{background:var(--o)}.rs{background:var(--r)}
+.chip{background:var(--l);color:var(--t);padding:10px 8px;border-radius:20px}.chip.on{background:var(--p);color:#fff}
+label{display:block;font-weight:700;margin-top:8px}input[type=range]{width:100%;height:36px}
+.info{background:var(--bg);border-radius:10px;padding:10px;font-weight:600;margin-top:8px}
+details{background:var(--bg);border-radius:10px;padding:10px;margin:6px 0}summary{cursor:pointer;font-weight:600}
+details p{margin:6px 0 0;color:var(--g);font-weight:700}
+ul,ol{padding-left:22px;margin:6px 0}
+</style></head><body>
+<header><h1>3-mavzu: Kinematikaning asosiy tushunchalari</h1><p>7-sinf fizika · interaktiv dars</p></header>
+<main>
+
+<section><h2>1. Moddiy nuqta va trayektoriya</h2>
+<p>Jismning o'lchamlari u bosib o'tadigan masofadan juda kichik bo'lsa, uni <b>moddiy nuqta</b> deb qaraymiz. Moddiy nuqta — massasi bor, lekin o'lchamlari hisobga olinmaydigan jism modeli. Jism harakatlanganda qoldiradigan ko'zga ko'rinmas iz <b>trayektoriya</b> deyiladi. U to'g'ri chiziq yoki egri chiziq bo'lishi mumkin. Bir jismni bir holatda nuqta deb olish mumkin, boshqa holatda esa mumkin emas.</p>
+<h3>Kundalik misollar</h3><div class="ex"><div>Toshkentdan Samarqandga ketayotgan avtobusni nuqta deb olamiz. Garajga burilib kirayotganda esa uning o'lchamini hisobga olish kerak.</div><div>Samolyot osmonda oq iz qoldiradi, bu uning trayektoriyasi. Tepaga tashlangan to'p esa egri chiziq chizadi.</div></div>
+<h3>Simulyatsiya</h3>
+<div class="row" id="o1"><button class="chip on" data-e="🚗" data-s="4">🚗 Mashina</button><button class="chip" data-e="⚽" data-s="0.2">⚽ To'p</button><button class="chip" data-e="✈️" data-s="40">✈️ Samolyot</button></div>
+<canvas id="c1" width="320" height="200"></canvas>
+<label>Bosib o'tiladigan masofa: <span id="d1v">100</span> m</label><input type="range" id="d1" min="1" max="1000" value="100">
+<div class="row"><button class="go" id="g1">Boshlash</button><button class="st" id="s1">To'xtatish</button><button class="rs" id="r1">Qayta boshlash</button></div>
+<div class="info" id="i1"></div>
+<h3>Tekshiruv savollari</h3><div id="q1"></div></section>
+
+<section><h2>2. Yo'l va ko'chish</h2>
+<p><b>Yo'l (s)</b> — jism trayektoriya bo'ylab bosib o'tgan butun masofa. U skalyar kattalik, birligi metr (m) va hech qachon kamaymaydi. <b>Ko'chish</b> — boshlang'ich nuqtadan oxirgi nuqtaga yo'nalgan vektor (to'g'ri chiziqli kesma). Ko'chish moduli yo'ldan katta bo'lmaydi. Jism boshlang'ich nuqtaga qaytsa, ko'chish nolga teng bo'ladi, yo'l esa nolga teng bo'lmaydi.</p>
+<h3>Kundalik misollar</h3><div class="ex"><div>Uydan maktabgacha ko'chalar bo'ylab 500 m yurdingiz, to'g'ri chiziqdagi masofa esa 300 m. Yo'l 500 m, ko'chish 300 m.</div><div>Stadionda 400 m li yo'lakni bir marta aylanib chiqdingiz. Yo'l 400 m, ko'chish 0.</div></div>
+<h3>Simulyatsiya</h3>
+<canvas id="c2" width="320" height="200"></canvas>
+<label>Jism holati: <span id="p2v">0</span>%</label><input type="range" id="p2" min="0" max="100" value="0">
+<div class="row"><button class="go" id="g2">Boshlash</button><button class="st" id="s2">To'xtatish</button><button class="rs" id="r2">Qayta boshlash</button></div>
+<div class="info"><span style="color:#2563eb">■ Yo'l (ko'k):</span> <span id="y2">0</span> m<br><span style="color:#dc2626">■ Ko'chish (qizil):</span> <span id="k2">0</span> m</div>
+<h3>Tekshiruv savollari</h3><div id="q2"></div></section>
+
+<section><h2>3. Mexanik va ilgarilanma harakat</h2>
+<p><b>Mexanik harakat</b> — vaqt o'tishi bilan jismning boshqa jismlarga nisbatan vaziyati o'zgarishi. Harakat qaysi jismga nisbatan qaralsa, o'sha jism <b>sanoq jismi</b> deyiladi. Harakat nisbiy: jism bir jismga nisbatan tinch, boshqasiga nisbatan harakatda bo'lishi mumkin. <b>Ilgarilanma harakatda</b> jismning barcha nuqtalari bir xil trayektoriya chizadi va bir xil yo'l bosadi. Aylanma harakatda esa nuqtalar turli radiusli aylanalar chizadi.</p>
+<h3>Kundalik misollar</h3><div class="ex"><div>Poyezdda o'tirgan yo'lovchi poyezdga nisbatan tinch, platformadagi odamga nisbatan esa harakatda.</div><div>Lift kabinasi tepaga ilgarilanma harakat qiladi. Velosiped g'ildiragining chetki nuqtasi esa aylanma harakat qiladi.</div></div>
+<h3>Simulyatsiya</h3>
+<div class="row" id="o3"><button class="chip on" data-m="plat">Platformadan</button><button class="chip" data-m="train">Poyezddan</button><button class="chip" data-m="tr">Ilgarilanma</button><button class="chip" data-m="rot">Aylanma</button></div>
+<canvas id="c3" width="320" height="200"></canvas>
+<div class="row"><button class="go" id="g3">Boshlash</button><button class="st" id="s3">To'xtatish</button><button class="rs" id="r3">Qayta boshlash</button></div>
+<div class="info" id="i3"></div>
+<h3>Tekshiruv savollari</h3><div id="q3"></div></section>
+
+<section><h2>Xulosa</h2><ol>
+<li>Jism o'lchamlari masofaga nisbatan juda kichik bo'lsa, uni moddiy nuqta deb olamiz.</li>
+<li>Trayektoriya — jism harakatida qoldirgan iz. U to'g'ri yoki egri chiziq bo'ladi.</li>
+<li>Yo'l — skalyar kattalik (trayektoriya uzunligi). Ko'chish — boshidan oxiriga yo'nalgan vektor.</li>
+<li>Ko'chish moduli yo'ldan katta bo'lmaydi. Jism boshiga qaytsa, ko'chish nolga teng.</li>
+<li>Harakat nisbiy, shuning uchun sanoq jismi kerak. Ilgarilanma harakatda barcha nuqtalar bir xil yo'l bosadi.</li></ol>
+<h2 style="margin-top:16px">Mustaqil ish uchun masalalar</h2><div id="q4"></div></section>
+</main>
+<script>
+const $=s=>document.getElementById(s);
+function quiz(id,a){$(id).innerHTML=a.map((x,i)=>`<details><summary>${i+1}. ${x[0]}</summary><p>${x[1]}</p></details>`).join('')}
+quiz('q1',[["Qachon jismni moddiy nuqta deb olamiz?","Jism o'lchamlari u bosib o'tgan masofadan juda kichik bo'lganda."],["Trayektoriya nima?","Jism harakatlanganda qoldirgan ko'zga ko'rinmas iz (chiziq)."],["Darvozaga uchib borayotgan futbol to'pining trayektoriyasi qanday?","Egri chiziqli."]]);
+quiz('q2',[["Jism A dan B ga 5 m yurdi va A ga qaytdi. Yo'l va ko'chishni toping.","Yo'l 10 m, ko'chish 0."],["Yo'l va ko'chishdan qaysi biri vektor?","Ko'chish."],["Ko'chish moduli yo'ldan katta bo'lishi mumkinmi?","Yo'q, ko'pi bilan teng bo'ladi."]]);
+quiz('q3',[["Sanoq jismi nima?","Harakat qaysi jismga nisbatan qaralsa, o'sha jism."],["Ilgarilanma harakatga bitta misol keltiring.","Masalan, lift kabinasining harakati yoki to'g'ri yo'lda ketayotgan quti."],["Poyezddagi yo'lovchi poyezdga nisbatan harakatlanadimi?","Yo'q, poyezdga nisbatan tinch. Platformaga nisbatan esa harakatda."]]);
+quiz('q4',[["1. Avtobus to'g'ri yo'lda 12 km yurdi, keyin orqaga 5 km qaytdi. Yo'l va ko'chishni toping.","Yo'l 17 km, ko'chish 7 km."],["2. Bola 3 m sharqqa, so'ng 4 m shimolga yurdi. Yo'l va ko'chish nechaga teng?","Yo'l 7 m, ko'chish 5 m."],["3. Radiusi 50 m bo'lgan dumaloq trekni yarim aylanib o'tgan yuguruvchining ko'chishi qancha?","Diametrga teng: 100 m. Yo'l taxminan 157 m."],["4. Qaysi holatda jismni moddiy nuqta deb olish mumkin: Yerning Quyosh atrofidagi harakatidami yoki uzunlikka sakrovchi sportchining havodagi holatida?","Birinchisida, chunki Yer o'lchami Quyoshgacha masofadan juda kichik."],["5. Poyezd derazasidan daraxtlar orqaga qarab yuguryapti. Sanoq jismini aniqlang va sababini tushuntiring.","Sanoq jismi — poyezd (yo'lovchi). Unga nisbatan daraxtlar orqaga siljiydi, chunki harakat nisbiy."]]);
+
+function anim(upd){let t=0,run=0,last=0;const f=n=>{if(!run)return;t=Math.min(1,t+(n-last)/6000);last=n;upd(t);if(t>=1)run=0;else requestAnimationFrame(f)};
+return{go(){if(t>=1)t=0;run=1;last=performance.now();requestAnimationFrame(f)},stop(){run=0},reset(){run=0;t=0;upd(0)},set(v){t=v;upd(v)}}}
+function wire(n,a){$('g'+n).onclick=()=>a.go();$('s'+n).onclick=()=>a.stop();$('r'+n).onclick=()=>a.reset()}
+const X=(c,w,col,pts)=>{c.strokeStyle=col;c.lineWidth=w;c.beginPath();pts.forEach((p,i)=>i?c.lineTo(p[0],p[1]):c.moveTo(p[0],p[1]));c.stroke()};
+const emo=(c,e,x,y,s)=>{c.font=s+'px serif';c.textAlign='center';c.textBaseline='middle';c.fillText(e,x,y)};
+
+/* 1 */
+const c1=$('c1').getContext('2d');let e1='🚗',s1=4;
+const L1=t=>[20+280*t,60],C1=t=>[20+280*t,145-32*Math.sin(t*Math.PI*3)];
+function d1(t){const D=+$('d1').value;c1.clearRect(0,0,320,200);
+ [[L1,'#2563eb'],[C1,'#dc2626']].forEach(([f,col])=>{const all=[],tr=[];for(let i=0;i<=60;i++){all.push(f(i/60));if(i/60<=t)tr.push(f(i/60))}
+  c1.setLineDash([4,5]);X(c1,1.5,'#b8c4d4',all);c1.setLineDash([]);if(tr.length>1)X(c1,4,col,tr);
+  const p=f(t),n=D/s1,sz=Math.min(48,280*s1/D);
+  if(n>=50||sz<10){c1.fillStyle=col;c1.beginPath();c1.arc(p[0],p[1],5,0,7);c1.fill()}else emo(c1,e1,p[0],p[1],sz*1.2)});
+ c1.fillStyle='#546579';c1.font='12px sans-serif';c1.textAlign='left';c1.fillText("To'g'ri chiziqli trayektoriya",10,22);c1.fillText("Egri chiziqli trayektoriya",10,105);
+ const n=D/s1;$('i1').innerHTML=`Masofa ÷ jism o'lchami = ${n>=10?Math.round(n):n.toFixed(1)}<br>`+(n>=50?"✅ Jism o'lchami masofadan juda kichik: moddiy nuqta deb olamiz.":"❌ Masofa kichik: jism o'lchamini hisobga olish kerak.")}
+const a1=anim(d1);wire(1,a1);$('d1').oninput=e=>{$('d1v').textContent=e.target.value;d1(0);a1.reset()};
+document.querySelectorAll('#o1 button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#o1 button').forEach(x=>x.classList.remove('on'));b.classList.add('on');e1=b.dataset.e;s1=+b.dataset.s;a1.reset()});a1.reset();
+
+/* 2 */
+const c2=$('c2').getContext('2d'),P=[[30,170],[110,55],[190,150],[290,40]],sg=[];let L=0;
+for(let i=0;i<3;i++){const l=Math.hypot(P[i+1][0]-P[i][0],P[i+1][1]-P[i][1]);sg.push(l);L+=l}
+function d2(t){c2.clearRect(0,0,320,200);const s=t*L;let a=s,i=0;while(i<2&&a>sg[i]){a-=sg[i];i++}
+ const k=a/sg[i],pos=[P[i][0]+(P[i+1][0]-P[i][0])*k,P[i][1]+(P[i+1][1]-P[i][1])*k];
+ c2.setLineDash([4,5]);X(c2,1.5,'#b8c4d4',P);c2.setLineDash([]);X(c2,5,'#2563eb',[...P.slice(0,i+1),pos]);
+ const dx=pos[0]-P[0][0],dy=pos[1]-P[0][1],dl=Math.hypot(dx,dy);
+ if(dl>4){X(c2,3,'#dc2626',[P[0],pos]);const an=Math.atan2(dy,dx);c2.fillStyle='#dc2626';c2.beginPath();c2.moveTo(pos[0],pos[1]);c2.lineTo(pos[0]-12*Math.cos(an-.4),pos[1]-12*Math.sin(an-.4));c2.lineTo(pos[0]-12*Math.cos(an+.4),pos[1]-12*Math.sin(an+.4));c2.fill()}
+ c2.fillStyle='#16a34a';c2.beginPath();c2.arc(P[0][0],P[0][1],6,0,7);c2.fill();emo(c2,'🚶',pos[0],pos[1]-10,24);
+ c2.fillStyle='#1b2a3d';c2.font='bold 13px sans-serif';c2.fillText('A',P[0][0]-4,P[0][1]+18);
+ $('y2').textContent=(s/10).toFixed(1);$('k2').textContent=(dl/10).toFixed(1);$('p2').value=t*100;$('p2v').textContent=Math.round(t*100)}
+const a2=anim(d2);wire(2,a2);$('p2').oninput=e=>{a2.stop();a2.set(e.target.value/100)};a2.reset();
+
+/* 3 */
+const c3=$('c3').getContext('2d');let m3='plat';
+const O=[[-40,-25,'#dc2626'],[0,-25,'#16a34a'],[25,0,'#2563eb']];
+const INF={plat:"Platformadagi kuzatuvchiga nisbatan yo'lovchi poyezd bilan birga harakatlanmoqda.",train:"Poyezdga nisbatan yo'lovchi tinch turibdi, platforma esa orqaga harakatlanmoqda.",tr:"Ilgarilanma harakat: 3 ta nuqtaning ham yo'li bir xil — 15.0 m.",rot:""};
+function d3(t){c3.clearRect(0,0,320,200);
+ if(m3=='plat'||m3=='train'){c3.fillStyle='#9ca3af';c3.fillRect(0,150,320,50);const pl=m3=='plat';
+  const tx=pl?-120+450*t:100,ox=pl?250:250-(450*t)+60;
+  c3.fillStyle='#d1d5db';c3.fillRect(pl?0:ox-170,140,pl?320:340,10);emo(c3,'🧍',ox,128,34);
+  c3.fillStyle='#2563eb';c3.fillRect(tx,95,110,45);c3.fillStyle='#bfdbfe';c3.fillRect(tx+8,102,26,16);c3.fillRect(tx+44,102,26,16);c3.fillRect(tx+80,102,22,16);
+  emo(c3,'🧑',tx+57,112,26);c3.fillStyle='#1b2a3d';c3.font='11px sans-serif';c3.fillText(pl?'Sanoq jismi: platforma':'Sanoq jismi: poyezd',60,25);$('i3').textContent=INF[m3]}
+ else{const R=m3=='rot',ang=2*Math.PI*t;
+  const cx=t=>R?160:30+150*t+40,tf=(o,u)=>{if(!R)return[cx(u)+o[0],100+o[1]];const a=2*Math.PI*u,co=Math.cos(a),si=Math.sin(a);return[160+o[0]*co-o[1]*si,100+o[0]*si+o[1]*co]};
+  O.forEach(o=>{const tr=[];for(let i=0;i<=60;i++)if(i/60<=t)tr.push(tf(o,i/60));if(tr.length>1)X(c3,3,o[2],tr)});
+  const q=O.map(o=>tf(o,t)),h=[[-40,-25],[40,-25],[40,25],[-40,25],[-40,-25]].map(o=>tf(o,t));X(c3,3,'#1b2a3d',h);
+  q.forEach((p,i)=>{c3.fillStyle=O[i][2];c3.beginPath();c3.arc(p[0],p[1],6,0,7);c3.fill()});
+  $('i3').innerHTML=R?"Aylanma harakat: nuqtalar turli yo'l bosdi: "+O.map(o=>`<span style="color:${o[2]}">${(Math.hypot(o[0],o[1])*ang/10).toFixed(1)} m</span>`).join(', '):INF.tr}}
+const a3=anim(d3);wire(3,a3);
+document.querySelectorAll('#o3 button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#o3 button').forEach(x=>x.classList.remove('on'));b.classList.add('on');m3=b.dataset.m;a3.reset()});a3.reset();
+</script></body></html>
