@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Sinf Fizika: Mexanik Harakat Dars Ishlanmasi</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #f8fafc;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            font-size: 10.5pt;
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: #ffffff;
+            padding: 24px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-banner h1 {
+            margin: 0 0 6px 0;
+            font-size: 20pt;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header-banner p {
+            margin: 0;
+            font-size: 11pt;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .section-title {
+            color: #1e3a8a;
+            font-size: 14pt;
+            font-weight: 700;
+            border-left: 4px solid #2563eb;
+            padding-left: 10px;
+            margin-top: 24px;
+            margin-bottom: 14px;
+            page-break-after: avoid;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 14px 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            page-break-inside: avoid;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #0f172a;
+            font-size: 12pt;
+        }
+
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-weight: 600;
+            font-size: 8.5pt;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #bfdbfe;
+            margin-bottom: 6px;
+        }
+
+        .example-box {
+            background-color: #f1f5f9;
+            border-left: 3px solid #64748b;
+            padding: 8px 12px;
+            margin-top: 8px;
+            border-radius: 0 6px 6px 0;
+            font-size: 10pt;
+        }
+
+        .example-box strong {
+            color: #334155;
+        }
+
+        /* Test questions table layout */
+        .test-item {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .test-question {
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .test-options {
+            display: table;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+
+        .test-option-row {
+            display: table-row;
+        }
+
+        .test-option {
+            display: table-cell;
+            width: 50%;
+            padding: 3px 6px;
+            font-size: 9.5pt;
+        }
+
+        .test-answer {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 9.5pt;
+            color: #166534;
+        }
+
+        pre, code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-radius: 6px;
+            font-size: 8.5pt;
+        }
+
+        pre {
+            padding: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            page-break-inside: avoid;
+        }
+
+        /* Simulyatsiya uslublari */
+        .sim-container {
+            background: #ffffff;
+            border: 2px solid #3b82f6;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+
+        .sim-canvas-wrapper {
+            width: 100%;
+            background: #0f172a;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: 240px;
+        }
+
+        .sim-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            font-size: 9pt;
+            color: #334155;
+        }
+
+        .control-group input[type=range] {
+            width: 100%;
+            accent-color: #2563eb;
+            cursor: pointer;
+        }
+
+        .sim-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        .stat-card {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .stat-card .title {
+            font-size: 8.5pt;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .stat-card .value {
+            font-size: 13pt;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 9pt;
+            color: #94a3b8;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header-banner">
+        <span style="background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 20px; font-size: 9pt; text-transform: uppercase; font-weight: 600;">7-Sinf Fizika Fanidan Dars Ishlanmasi</span>
+        <h1>1-mavzu: Mexanik harakat haqida umumiy ma'lumotlar</h1>
+        <p>Interaktiv va zamonaviy dars materiallari to'plami (Nazariya, Simulyatsiyalar, Testlar, Python Kodi)</p>
+    </div>
+
+    <!-- Interaktiv Interfeysli Simulyatsiya -->
+    <div class="section-title">⚡ Interaktiv Onlayn Simulyatsiya (Brauzerda Ishlaydi)</div>
+    
+    <div class="sim-container">
+        <div class="sim-canvas-wrapper">
+            <canvas id="motionCanvas" width="800" height="240"></canvas>
+        </div>
+
+        <div class="sim-controls">
+            <div class="control-group">
+                <label for="sliderX1">1-Nuqta - Boshlang'ich (X1): <span id="valX1" class="math">-5</span> m</label>
+                <input type="range" id="sliderX1" min="-12" max="12" value="-5" step="0.5">
+            </div>
+            <div class="control-group">
+                <label for="sliderX2">2-Nuqta - Burilish (X2): <span id="valX2" class="math">10</span> m</label>
+                <input type="range" id="sliderX2" min="-12" max="12" value="10" step="0.5">
+            </div>
+            <div class="control-group">
+                <label for="sliderX3">3-Nuqta - Yakuniy (X3): <span id="valX3" class="math">2</span> m</label>
+                <input type="range" id="sliderX3" min="-12" max="12" value="2" step="0.5">
+            </div>
+        </div>
+
+        <div class="sim-stats">
+            <div class="stat-card" style="border-color: #ef4444;">
+                <div class="title">Bosib o'tilgan Yo'l (s)</div>
+                <div class="value" id="pathVal" style="color: #dc2626;">23.0 m</div>
+            </div>
+            <div class="stat-card" style="border-color: #2563eb;">
+                <div class="title">Ko'chish Moduli (|r|)</div>
+                <div class="value" id="dispVal" style="color: #2563eb;">7.0 m</div>
+            </div>
+            <div class="stat-card" style="border-color: #10b981;">
+                <div class="title">Ko'chish Yo'nalishi</div>
+                <div class="value" id="dirVal" style="color: #059669;">O'ngga (+)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Nazariy Tushunchalar -->
+    <div class="section-title">1. Nazariy Tushunchalar va Hayotiy Misollar</div>
+
+    <div class="card">
+        <span class="badge">Reja 1</span>
+        <h3>Mexanik harakat, traektoriya, yo'l va ko'chish</h3>
+        <p><strong>Mexanik harakat:</strong> Jismning vaqt o'tishi bilan boshqa jismlarga nisbatan fazodagi vaziyatining o'zgarishi.</p>
+        <ul>
+            <li><strong>Traektoriya:</strong> Jism harakatlanayotganda qoldirgan chizig'i (ko'rinadigan yoki ko'rinmas).</li>
+            <li><strong>Yo'l (<span class="math">s</span>):</strong> Traektoriyaning uzunligi (skalyar kattalik, har doim musbat).</li>
+            <li><strong>Ko'chish (<span class="math">r̄</span>):</strong> Harakatning boshlang'ich va oxirgi nuqtalarini tutashtiruvchi yo'nalishli kesma (vektor kattalik).</li>
+        </ul>
+        <div class="example-box">
+            <strong>Hayotiy misol:</strong> O'quvchi uyidan chiqib, avval do'konga kirdi, so'ng maktabga keldi.<br>
+            • <em>Traektoriya</em> — uning bosib o'tgan egri-bugri izi.<br>
+            • <em>Yo'l</em> — odam o'lchagich (pedometr) ko'rsatgan jami metrlar summasi (masalan, <span class="math">800 m</span>).<br>
+            • <em>Ko'chish</em> — uyidan maktabgacha bo'lgan eng qisqa to'g'ri chiziq masofasi va yo'nalishi (masalan, <span class="math">500 m</span> shimoli-sharqqa).
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="badge">Reja 2</span>
+        <h3>Harakat nisbiyligi</h3>
+        <p>Biror jism bir vaqtning o'zida bir jismga nisbatan <strong>harakatda</strong>, boshqasiga nisbatan esa <strong>sukunatda</strong> bo'lishi mumkin. Harakat mutlaq emas, u nisbiydir.</p>
+        <div class="example-box">
+            <strong>Hayotiy misol:</strong> Harakatlanayotgan avtobusda o'tirgan yo'lovchi:<br>
+            • Avtobus saloniga yoki yonidagi sherigiga nisbatan — <strong>sukunatda</strong>;<br>
+            • Yo'l yoqasida turgan bekatchiga yoki daraxtlarga nisbatan — <strong>harakatda</strong>.
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="badge">Reja 3</span>
+        <h3>Sanoq jism</h3>
+        <p>Boshqa jismlarning harakati qaysi jismga nisbatan o'rganilayotgan bo'lsa, o'sha jism <strong>sanoq jism</strong> deyiladi. Sanoq jismsiz harakatni aniqlab bo'lmaydi.</p>
+        <div class="example-box">
+            <strong>Hayotiy misol:</strong> Poyezd ketayotganda siz "poyezd soatiga <span class="math">80 km/h</span> tezlikda ketayapti" desangiz, sanoq jism sifatida <strong>Yer (poyezd relsi)</strong> olingan bo'ladi.
+        </div>
+    </div>
+
+    <div class="card">
+        <span class="badge">Reja 4</span>
+        <h3>Sanoq sistemasi</h3>
+        <p>Sanoq jism, unga bog'langan <strong>koordinatalar sistemasi</strong> (masalan, <span class="math">OX</span> yoki <span class="math">OXY</span> o'qlari) va vaqtni o'lchaydigan <strong>soat</strong> birgalikda <strong>sanoq sistemasini</strong> tashkil etadi.</p>
+        <div class="example-box">
+            <strong>Hayotiy misol:</strong> Samolyotning osmondagi o'rnini aniqlash uchun uning xaritadagi o'rni (kenglik va uzunlik <span class="math">x, y</span>), balandligi (<span class="math">z</span>) hamda parvoz vaqti (<span class="math">t</span>) kerak. Bu to'liq 3D sanoq sistemasidir.
+        </div>
+    </div>
+
+    <!-- 2. Simulyatsiya Stsenariylari -->
+    <div class="section-title">2. Interaktiv Simulyatsiya va Animatsiya Stsenariylari</div>
+
+    <div class="card">
+        <h3>1. Scratch Platformasi Uchun Stsenariy: "Yo'l va Ko'chish Simulyatori"</h3>
+        <p><strong>Maqsad:</strong> O'quvchilar yo'l va ko'chish o'rtasidagi farqni vizual ko'rishadi.</p>
+        <p><strong>Topshiriq tuzilishi:</strong></p>
+        <ol>
+            <li><strong>Sprayt (Obyekt):</strong> Sichqoncha ko'rsatkichi ortidan yuradigan "Avtomobil".</li>
+            <li><strong>Fon:</strong> Ko'chalar xaritasi (grid/katakchalar bilan).</li>
+            <li><strong>Mantiq (Skript):</strong>
+                <ul>
+                    <li>Start nuqtasi <span class="math">A(0,0)</span> qilib belgilanadi. Avtomobil harakatlanganda qizil qalam bilan iz qoldiradi (Traektoriya).</li>
+                    <li>Boshlang'ich nuqtadan joriy nuqtagacha bo'lgan barcha bosib o'tilgan masofalar yig'indisi <code>Yol</code> o'zgaruvchisiga yozib boriladi.</li>
+                    <li><span class="math">A</span> nuqtadan joriy nuqtagacha bo'lgan eng qisqa chiziq (ko'k rangli strelka) tortiladi va uning uzunligi <code>Kochish</code> o'zgaruvchisida ko'rsatiladi.</li>
+                </ul>
+            </li>
+            <li><strong>Natija:</strong> O'quvchi avtomobilni doira bo'ylab harakatlantirib, boshlang'ich nuqtaga qaytarsa, <code>Yol</code> ortishini, lekin <code>Kochish = 0</code> bo'lib qolishini ko'rib xulosa chiqaradi.</li>
+        </ol>
+    </div>
+
+    <div class="card">
+        <h3>2. PhET Interactive Simulations (Motion) Topshiriq Stsenariysi</h3>
+        <p><strong>Ishlatiladigan simulyatsiya:</strong> PhET "Moving Man" (Harakatlanayotgan odam).</p>
+        <p><strong>O'quvchilar uchun ko'rsatma:</strong></p>
+        <ol>
+            <li>Odamchaning pozitsiyasini <span class="math">x = -10 m</span> nuqtaga qo'ying.</li>
+            <li>Uni sekin <span class="math">x = +5 m</span> nuqtaga suring, so'ng orqaga qaytarib <span class="math">x = 0 m</span> nuqtaga to'xtating.</li>
+            <li>Pozitsiya (<span class="math">x</span>) grafikasi va umumiy masofani kuzating.</li>
+            <li><strong>Savol:</strong> Odamchaning ko'chishi va o'tgan yo'li nechaga teng?<br>
+            <em>(Javob: Yo'l = <span class="math">15 + 5 = 20 m</span>; Ko'chish = <span class="math">0 - (-10) = +10 m</span>)</em></li>
+        </ol>
+    </div>
+
+    <!-- 3. Test Savollari -->
+    <div class="section-title">3. Mavzuni Mustahkamlash Uchun Test Savollari</div>
+
+    <div class="test-item">
+        <div class="test-question">1. Futbolchi maydonda <span class="math">400 m</span> lik yugurish yo'lakchasini to'liq bir aylanib o'tib, start nuqtasiga qaytib keldi. Futbolchining o'tgan yo'li (<span class="math">s</span>) va ko'chish moduli (<span class="math">r</span>) nimaga teng?</div>
+        <div class="test-options">
+            <div class="test-option-row">
+                <div class="test-option">A) <span class="math">s = 400 m</span>, <span class="math">r = 400 m</span></div>
+                <div class="test-option">B) <span class="math">s = 400 m</span>, <span class="math">r = 0 m</span></div>
+            </div>
+            <div class="test-option-row">
+                <div class="test-option">C) <span class="math">s = 0 m</span>, <span class="math">r = 400 m</span></div>
+                <div class="test-option">D) <span class="math">s = 0 m</span>, <span class="math">r = 0 m</span></div>
+            </div>
+        </div>
+        <div class="test-answer">
+            <strong>To'g'ri javob: B</strong><br>
+            <strong>Izoh:</strong> Jism harakatlanib yana boshlang'ich nuqtasiga qaytsa, uning boshlang'ich va oxirgi nuqtalari ustma-ust tushadi, shuning uchun ko'chishi zero (<span class="math">0</span>), lekin bosib o'tilgan chiziq uzunligi (yo'l) <span class="math">400 m</span> bo'ladi.
+        </div>
+    </div>
+
+    <div class="test-item">
+        <div class="test-question">2. Daryoda oqim bo'ylab suzib ketayotgan sal (plot) ustida odam ko'chmasdan turibdi. Odam qaysi jismga nisbatan harakatda?</div>
+        <div class="test-options">
+            <div class="test-option-row">
+                <div class="test-option">A) Salga nisbatan</div>
+                <div class="test-option">B) Sal ustidagi yukka nisbatan</div>
+            </div>
+            <div class="test-option-row">
+                <div class="test-option">C) Daryo qirg'og'ida turgan daraxtga nisbatan</div>
+                <div class="test-option">D) Oqib ketayotgan suvga nisbatan</div>
+            </div>
+        </div>
+        <div class="test-answer">
+            <strong>To'g'ri javob: C</strong><br>
+            <strong>Izoh:</strong> Sal va uning ustidagi odam suv oqimi tezligida birga suzadi. Ular bir-biriga va suvga nisbatan tinch holatda, ammo ko'chmas daryo qirg'og'iga (daraxtga) nisbatan harakatlanadi.
+        </div>
+    </div>
+
+    <div class="test-item">
+        <div class="test-question">3. Sanoq sistemasini tashkil etuvchi elementlar to'g'ri ko'rsatilgan qatorni toping.</div>
+        <div class="test-options">
+            <div class="test-option-row">
+                <div class="test-option">A) Sanoq jism va koordinatalar sistemasi</div>
+                <div class="test-option">B) Sanoq jism, koordinatalar sistemasi va vaqtni o'lchaydigan soat</div>
+            </div>
+            <div class="test-option-row">
+                <div class="test-option">C) Traektoriya, yo'l va ko'chish</div>
+                <div class="test-option">D) Tezlik, vaqt va masofa</div>
+            </div>
+        </div>
+        <div class="test-answer">
+            <strong>To'g'ri javob: B</strong><br>
+            <strong>Izoh:</strong> Sanoq sistemasi uchta ajralmas qismdan iborat: Sanoq jism + Koordinata o'qlari + Soat.
+        </div>
+    </div>
+
+    <div class="test-item">
+        <div class="test-question">4. Jism koordinatasi <span class="math">X₁ = -5 m</span> bo'lgan nuqtadan <span class="math">X₂ = +15 m</span> nuqtaga to'g'ri chiziq bo'ylab ko'chdi. Jismning ko'chishini toping.</div>
+        <div class="test-options">
+            <div class="test-option-row">
+                <div class="test-option">A) <span class="math">10 m</span></div>
+                <div class="test-option">B) <span class="math">-20 m</span></div>
+            </div>
+            <div class="test-option-row">
+                <div class="test-option">C) <span class="math">20 m</span></div>
+                <div class="test-option">D) <span class="math">15 m</span></div>
+            </div>
+        </div>
+        <div class="test-answer">
+            <strong>To'g'ri javob: C</strong><br>
+            <strong>Izoh:</strong> To'g'ri chiziqli harakatda ko'chish <span class="math">ΔX = X₂ - X₁ = 15 - (-5) = 15 + 5 = 20 m</span>.
+        </div>
+    </div>
+
+    <div class="test-item">
+        <div class="test-question">5. Qaysi holatda jismni moddiy nuqta deb qarash MUMKIN?</div>
+        <div class="test-options">
+            <div class="test-option-row">
+                <div class="test-option">A) Samolyotning o'lchamlarini uning Toshkentdan Samarqandgacha bo'lgan parvoz masofasiga nisbatan solishtirganda</div>
+                <div class="test-option">B) Turnikda mashq bajarayotgan gimnastikachini o'rganishda</div>
+            </div>
+            <div class="test-option-row">
+                <div class="test-option">C) Detalni mikrometr bilan o'lchashda</div>
+                <div class="test-option">D) Shaxmat taxtasidagi piyodaning o'lchamini hisobga olganda</div>
+            </div>
+        </div>
+        <div class="test-answer">
+            <strong>To'g'ri javob: A</strong><br>
+            <strong>Izoh:</strong> Jismning o'lchamlari u bosib o'tadigan masofaga nisbatan juda kichik bo'lsa (samolyot uzunligi ~<span class="math">50 m</span>, masofa ~<span class="math">300 km</span>), uni moddiy nuqta deb olish mumkin.
+        </div>
+    </div>
+
+    <!-- JavaScript Simulyatsiya Kodi -->
+    <script>
+        const canvas = document.getElementById('motionCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const sliderX1 = document.getElementById('sliderX1');
+        const sliderX2 = document.getElementById('sliderX2');
+        const sliderX3 = document.getElementById('sliderX3');
+
+        const valX1 = document.getElementById('valX1');
+        const valX2 = document.getElementById('valX2');
+        const valX3 = document.getElementById('valX3');
+
+        const pathVal = document.getElementById('pathVal');
+        const dispVal = document.getElementById('dispVal');
+        const dirVal = document.getElementById('dirVal');
+
+        function mapX(x) {
+            // -15m to +15m -> Canvas Width (50px to 750px)
+            const margin = 50;
+            return margin + (x + 15) * ((canvas.width - 2 * margin) / 30);
+        }
+
+        function drawArrow(fromX, fromY, toX, toY, color, label) {
+            const headlen = 10;
+            const angle = Math.atan2(toY - fromY, toX - fromX);
+
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = 3;
+
+            ctx.beginPath();
+            ctx.moveTo(fromX, fromY);
+            ctx.lineTo(toX, toY);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.moveTo(toX, toY);
+            ctx.lineTo(toX - headlen * Math.cos(angle - Math.PI / 6), toY - headlen * Math.sin(angle - Math.PI / 6));
+            ctx.lineTo(toX - headlen * Math.cos(angle + Math.PI / 6), toY - headlen * Math.sin(angle + Math.PI / 6));
+            ctx.fill();
+
+            if (label) {
+                ctx.font = 'bold 12px Segoe UI';
+                ctx.fillText(label, (fromX + toX) / 2, (fromY + toY) / 2 + 18);
+            }
+        }
+
+        function render() {
+            const x1 = parseFloat(sliderX1.value);
+            const x2 = parseFloat(sliderX2.value);
+            const x3 = parseFloat(sliderX3.value);
+
+            valX1.textContent = x1.toFixed(1);
+            valX2.textContent = x2.toFixed(1);
+            valX3.textContent = x3.toFixed(1);
+
+            // Calculate metrics
+            const s1 = Math.abs(x2 - x1);
+            const s2 = Math.abs(x3 - x2);
+            const totalPath = s1 + s2;
+            const displacement = x3 - x1;
+
+            pathVal.textContent = totalPath.toFixed(1) + ' m';
+            dispVal.textContent = Math.abs(displacement).toFixed(1) + ' m';
+            
+            if (displacement > 0) {
+                dirVal.textContent = "O'ngga (+)";
+                dirVal.style.color = "#059669";
+            } else if (displacement < 0) {
+                dirVal.textContent = "Chapga (-)";
+                dirVal.style.color = "#dc2626";
+            } else {
+                dirVal.textContent = "Nol (0)";
+                dirVal.style.color = "#64748b";
+            }
+
+            // Canvas Clear
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            const axisY = 120;
+
+            // Draw Coordinate Axis
+            ctx.strokeStyle = '#475569';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(30, axisY);
+            ctx.lineTo(canvas.width - 30, axisY);
+            ctx.stroke();
+
+            // Ticks and Grid
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '11px Segoe UI';
+            ctx.textAlign = 'center';
+            for (let x = -15; x <= 15; x += 5) {
+                const cx = mapX(x);
+                ctx.beginPath();
+                ctx.moveTo(cx, axisY - 6);
+                ctx.lineTo(cx, axisY + 6);
+                ctx.stroke();
+                ctx.fillText(x + 'm', cx, axisY + 22);
+            }
+
+            const cx1 = mapX(x1);
+            const cx2 = mapX(x2);
+            const cx3 = mapX(x3);
+
+            // Draw Path Line (Red dashed/solid curve)
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(cx1, axisY - 15);
+            ctx.lineTo(cx2, axisY - 45);
+            ctx.lineTo(cx3, axisY - 15);
+            ctx.stroke();
+
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 12px Segoe UI';
+            ctx.fillText("Traektoriya (Yo'l)", (cx1 + cx2 + cx3)/3, axisY - 55);
+
+            // Draw Displacement Arrow (Blue vector)
+            if (Math.abs(displacement) > 0.1) {
+                drawArrow(cx1, axisY + 35, cx3, axisY + 35, '#2563eb', "Ko'chish vektori (r)");
+            }
+
+            // Draw Points
+            // Start (X1)
+            ctx.fillStyle = '#10b981';
+            ctx.beginPath();
+            ctx.arc(cx1, axisY, 9, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 10px Segoe UI';
+            ctx.fillText("X1", cx1, axisY - 15);
+
+            // Mid (X2)
+            ctx.fillStyle = '#f59e0b';
+            ctx.beginPath();
+            ctx.arc(cx2, axisY, 7, 0, Math.PI * 2);
+            ctx.fill();
+
+            // End (X3)
+            ctx.fillStyle = '#2563eb';
+            ctx.beginPath();
+            ctx.arc(cx3, axisY, 9, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = '#ffffff';
+            ctx.fillText("X3", cx3, axisY - 15);
+        }
+
+        sliderX1.addEventListener('input', render);
+        sliderX2.addEventListener('input', render);
+        sliderX3.addEventListener('input', render);
+
+        render();
+    </script>
+
+    <div class="footer">
+        7-sinf Fizika fani o'qituvchilari uchun interaktiv dars ishlanmasi to'plami.
+    </div>
+
+</body>
+</html>
