@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>To‘g‘ri chiziqli tekis harakat – 7-sinf fizika</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f2faff;--card:#fff;--ink:#1b2a49;--mut:#52617f;--a:#12b3a8;--b:#ff5d73;--c:#ffb800;--d:#4da3ff;--ok:#0e9f6e;--bad:#e03a52;--line:#d5e6f3}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1830;--card:#182544;--ink:#eaf2ff;--mut:#a9b8d6;--line:#2c3d66}}
+:root[data-theme="dark"]{--bg:#0f1830;--card:#182544;--ink:#eaf2ff;--mut:#a9b8d6;--line:#2c3d66}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:auto}
+*,*:before,*:after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 "Trebuchet MS","Segoe UI",Verdana,sans-serif}
+header{background:var(--a);color:#fff;padding:22px 16px 18px;border-bottom:8px solid var(--c)}
+header h1{margin:0 auto;max-width:860px;font-size:1.7rem;line-height:1.2}
+header p{margin:6px auto 0;max-width:860px;opacity:.95}
+nav{display:flex;gap:8px;flex-wrap:wrap;max-width:860px;margin:14px auto 0}
+nav a{background:#fff;color:#0b6e68;padding:6px 12px;border-radius:99px;text-decoration:none;font-weight:700;font-size:.9rem}
+main{max-width:860px;margin:0 auto;padding:14px}
+section{background:var(--card);border-radius:18px;padding:16px;margin:16px 0;border-top:8px solid var(--sc,var(--a))}
+h2{margin:0 0 8px;font-size:1.35rem}
+h3{margin:18px 0 6px;font-size:1.1rem;color:var(--sc,var(--a))}
+p{margin:8px 0}
+.def{background:var(--line);border-left:6px solid var(--c);padding:10px 12px;border-radius:8px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{background:var(--line);padding:6px 12px;border-radius:99px;font-weight:700}
+canvas{width:100%;height:auto;display:block;border-radius:12px;border:2px solid var(--line)}
+.note{color:var(--mut);font-size:.9rem}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+button,.btn{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 14px;cursor:pointer;color:#fff;background:var(--d)}
+button:focus-visible,input:focus-visible{outline:3px solid var(--c);outline-offset:2px}
+.go{background:var(--ok)}.st{background:var(--b)}.rs{background:var(--d)}
+.gaps{background:var(--line);border-radius:10px;padding:8px 10px;font-size:.95rem;min-height:3.4em}
+.formula{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0}
+.formula div{background:var(--c);color:#1b2a49;text-align:center;font-size:1.3rem;font-weight:800;border-radius:12px;padding:10px}
+.formula small{display:block;font-size:.8rem;font-weight:600}
+table{border-collapse:collapse;width:100%;text-align:center}
+th,td{border:2px solid var(--line);padding:6px}
+th{background:var(--a);color:#fff}
+.wrap{overflow-x:auto}
+label{display:block;font-weight:700;margin-top:8px}
+input[type=range]{width:100%;accent-color:var(--b);height:28px}
+input[type=number]{font:inherit;width:120px;padding:8px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+.ro{background:var(--ink);color:var(--bg);border-radius:10px;padding:10px;font-weight:700;text-align:center;margin:8px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.sol{border:2px dashed var(--d);border-radius:12px;padding:10px 12px;margin:10px 0}
+.sol p{margin:4px 0}
+.ans{color:var(--ok);font-weight:800}
+.fb{font-weight:700;margin:6px 0 0;min-height:1.4em}
+.ok{color:var(--ok)}.bad{color:var(--bad)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--line);color:var(--ink)}
+.opt.right{background:var(--ok);color:#fff}.opt.wrong{background:var(--bad);color:#fff}
+.q{border-bottom:2px solid var(--line);padding-bottom:10px;margin-bottom:10px}
+.sum{background:var(--c);color:#1b2a49;font-weight:600}
+.sum h2{color:#1b2a49}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header>
+<h1>To‘g‘ri chiziqli tekis harakat</h1>
+<p>7-sinf fizika · 5-mavzu · onlayn dars</p>
+<nav><a href="#s1">1. Tekis harakat</a><a href="#s2">2. To‘g‘ri chiziqli</a><a href="#s3">3. Tasvirlash</a><a href="#xul">Xulosa</a><a href="#test">Test</a></nav>
+</header>
+<main>
+
+<section id="s1" style="--sc:var(--a)">
+<h2>1. Tekis harakat haqida ma’lumot</h2>
+<p class="def"><b>Tekis harakat</b> – jism istalgan <b>teng vaqt oraliqlarida teng masofalarni</b> bosib o‘tadigan harakat.</p>
+<p>Hayotdagi misollar:</p>
+<div class="chips"><span class="chip">🛗 Eskalator</span><span class="chip">📦 Konveyer lenta</span><span class="chip">🕒 Soat mili</span></div>
+<h3>Animatsiya: ikki mashina</h3>
+<canvas id="c1" width="480" height="200" role="img" aria-label="Ikki mashina animatsiyasi"></canvas>
+<p class="note">Izoh: yashil mashina (A) tekis harakatlanadi – belgilar orasidagi masofalar teng. Qizil mashina (B) tobora tezlashadi – masofalar tobora kattalashadi. Har 1 soniyada yo‘lda belgi qoladi.</p>
+<div class="row"><button class="go" data-a="a1" data-act="start">▶ Ishga tushirish</button><button class="st" data-a="a1" data-act="stop">⏸ To‘xtatish</button><button class="rs" data-a="a1" data-act="restart">↺ Qayta boshlash</button></div>
+<div class="gaps" id="gaps1"></div>
+</section>
+
+<section id="s2" style="--sc:var(--b)">
+<h2>2. To‘g‘ri chiziqli harakat</h2>
+<p class="def"><b>Trayektoriya</b> – jism harakati davomida o‘tgan nuqtalarining ketma-ketligidan hosil bo‘lgan chiziq (jismning ortida qoladigan “iz”).</p>
+<p>Trayektoriyasi <b>to‘g‘ri chiziq</b> bo‘lsa – to‘g‘ri chiziqli harakat, <b>egri chiziq</b> bo‘lsa – egri chiziqli harakat.</p>
+<canvas id="c2" width="480" height="220" role="img" aria-label="To‘g‘ri va egri trayektoriya"></canvas>
+<p class="note">Izoh: sariq to‘p to‘g‘ri chiziq bo‘ylab, qizil to‘p egri chiziq bo‘ylab yuradi. Ularning ortida qolgan chiziq – trayektoriya.</p>
+<div class="row"><button class="go" data-a="a2" data-act="start">▶ Ishga tushirish</button><button class="st" data-a="a2" data-act="stop">⏸ To‘xtatish</button><button class="rs" data-a="a2" data-act="restart">↺ Qayta boshlash</button></div>
+<div class="chips"><span class="chip">🚗 To‘g‘ri yo‘ldagi avtomobil – to‘g‘ri chiziqli</span><span class="chip">🪨 Tushayotgan tosh – to‘g‘ri chiziqli (pastga)</span><span class="chip">🚆 Egri yo‘ldagi poyezd – egri chiziqli</span></div>
+</section>
+
+<section id="s3" style="--sc:var(--d)">
+<h2>3. To‘g‘ri chiziqli tekis harakatni tasvirlash</h2>
+<p>Tekis harakatda <b>tezlik</b> o‘zgarmaydi: u jism 1 soniyada qancha yo‘l o‘tishini ko‘rsatadi.</p>
+<div class="formula"><div>v = s / t<small>tezlik</small></div><div>s = v · t<small>yo‘l</small></div><div>t = s / v<small>vaqt</small></div></div>
+<p><b>Birliklar:</b> s – metr (m) yoki kilometr (km); t – soniya (s) yoki soat; v – m/s yoki km/soat.</p>
+<p class="def">1 km/soat = 1000 m / 3600 s = <b>5/18 m/s</b>. Demak: km/soat → m/s uchun <b>3,6 ga bo‘lamiz</b>, m/s → km/soat uchun <b>3,6 ga ko‘paytiramiz</b>.</p>
+<div class="row"><label>km/soat <input type="number" id="kmh" placeholder="36"></label><label>m/s <input type="number" id="ms" placeholder="10"></label></div>
+<p class="note">Izoh: biror maydonga son yozing – ikkinchisi avtomatik hisoblanadi.</p>
+
+<h3>Interaktiv simulyatsiya</h3>
+<canvas id="c3" width="480" height="130" role="img" aria-label="Jism harakati simulyatsiyasi"></canvas>
+<label>Tezlik v = <span id="vo">5</span> m/s<input type="range" id="vs" min="1" max="20" step="1" value="5"></label>
+<label>Vaqt t = <span id="to">6</span> s<input type="range" id="ts" min="1" max="10" step="1" value="6"></label>
+<div class="ro" id="ro"></div>
+<div class="row"><button class="go" data-a="a3" data-act="start">▶ Ishga tushirish</button><button class="st" data-a="a3" data-act="stop">⏸ To‘xtatish</button><button class="rs" data-a="a3" data-act="restart">↺ Qayta boshlash</button></div>
+<p class="note">Izoh: slayderlar bilan v va t ni tanlang. Jism harakatlanadi, yo‘l s = v · t real vaqtda hisoblanadi, grafiklar esa harakat bilan birga chiziladi.</p>
+
+<h3>Jadval: s = v · t</h3>
+<div class="wrap"><table id="tb"><thead><tr><th>t (s)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr></thead><tbody><tr><th>s (m)</th><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">Izoh: tezlikni o‘zgartirsangiz, jadval o‘zi to‘ladi. Vaqt 2 marta oshsa, yo‘l ham 2 marta oshadi.</p>
+
+<h3>Grafiklar</h3>
+<div class="grid"><div><canvas id="gs" width="400" height="240" role="img" aria-label="s(t) grafigi"></canvas><p class="note">s(t): to‘g‘ri chiziq – yo‘l vaqtga mutanosib o‘sadi.</p></div>
+<div><canvas id="gv" width="400" height="240" role="img" aria-label="v(t) grafigi"></canvas><p class="note">v(t): gorizontal chiziq – tezlik o‘zgarmaydi.</p></div></div>
+
+<h3>Yechilgan masalalar</h3>
+<div class="sol"><p><b>1-masala.</b> Avtomobil 15 m/s tezlik bilan 20 s harakatlandi. Qancha yo‘l bosdi?</p>
+<p><b>Berilgan:</b> v = 15 m/s, t = 20 s. <b>Topish kerak:</b> s = ?</p>
+<p><b>Formula:</b> s = v · t</p><p><b>Hisoblash:</b> s = 15 · 20 = 300 m</p><p class="ans">Javob: 300 m</p></div>
+<div class="sol"><p><b>2-masala.</b> Velosipedchi 36 km yo‘lni 2 soatda bosdi. Tezligini km/soat va m/s da toping.</p>
+<p><b>Berilgan:</b> s = 36 km, t = 2 soat. <b>Topish kerak:</b> v = ?</p>
+<p><b>1-qadam:</b> v = s / t = 36 / 2 = 18 km/soat</p>
+<p><b>2-qadam:</b> m/s ga o‘tkazamiz: 18 / 3,6 = 5 m/s</p><p class="ans">Javob: 18 km/soat = 5 m/s</p></div>
+
+<h3>Mustaqil masalalar</h3>
+<div id="pr"></div>
+</section>
+
+<section id="xul" class="sum" style="--sc:var(--b)">
+<h2>Xulosa</h2>
+<p>Jism teng vaqtlarda teng masofalarni bossa, harakat tekis bo‘ladi. Trayektoriya to‘g‘ri chiziq bo‘lsa, harakat to‘g‘ri chiziqli deyiladi. To‘g‘ri chiziqli tekis harakatda tezlik o‘zgarmaydi va v = s / t, s = v · t, t = s / v formulalari ishlaydi. Bu harakatda s(t) grafigi to‘g‘ri chiziq, v(t) grafigi esa gorizontal chiziq bo‘ladi.</p>
+</section>
+
+<section id="test" style="--sc:var(--ok)">
+<h2>Bilimingizni sinang</h2>
+<div id="quiz"></div>
+<p class="ro" id="score">Natija: 0 / 5</p>
+</section>
+</main>
+
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function Anim(cv,dur,draw){
+  var c=cv.getContext('2d'),t=0,run=false,last=0,raf=0;
+  var o={
+    frame:function(now){
+      if(!run)return;
+      t+=Math.min((now-last)/1000,0.1);last=now;
+      if(t>=dur){t=dur;run=false}
+      draw(c,t);
+      if(run)raf=requestAnimationFrame(o.frame);
+    },
+    start:function(){if(run)return;if(t>=dur)t=0;run=true;last=performance.now();raf=requestAnimationFrame(o.frame)},
+    stop:function(){run=false;cancelAnimationFrame(raf)},
+    reset:function(){o.stop();t=0;draw(c,0)},
+    restart:function(){o.reset();o.start()},
+    setDur:function(d){dur=d}
+  };
+  o.reset();
+  return o;
+}
+function car(c,x,y,col){
+  c.fillStyle=col;c.fillRect(x-34,y-8,34,14);c.fillRect(x-26,y-18,18,10);
+  c.fillStyle='#1b2a49';c.beginPath();c.arc(x-24,y+8,5,0,7);c.fill();c.beginPath();c.arc(x-8,y+8,5,0,7);c.fill();
+}
+
+/* 1-animatsiya */
+var g1=$('gaps1');
+var a1=Anim($('c1'),8,function(c,t){
+  c.fillStyle='#eaf6ff';c.fillRect(0,0,480,200);
+  var n=Math.floor(t+1e-9),A=[],B=[],k;
+  for(k=1;k<=n;k++){A.push(50);B.push(Math.round(6.25*(2*k-1)))}
+  [[60,'#12b3a8','A – tekis',function(k){return 50*k}],[140,'#ff5d73','B – notekis',function(k){return 6.25*k*k}]].forEach(function(L){
+    var y=L[0],col=L[1],f=L[3];
+    c.fillStyle='#c9dbe8';c.fillRect(0,y+8,480,6);
+    c.fillStyle='#1b2a49';c.font='bold 13px sans-serif';c.textAlign='left';c.fillText(L[2],8,y-30);
+    for(var i=0;i<=n;i++){
+      var x=40+f(i);c.fillStyle=col;c.beginPath();c.arc(x,y+11,4,0,7);c.fill();
+      c.fillStyle='#1b2a49';c.font='11px sans-serif';c.textAlign='center';c.fillText(i,x,y+28);
+    }
+    car(c,40+f(t),y,col);
+  });
+  g1.innerHTML='Har soniyada o‘tilgan masofa (m):<br><b style="color:var(--a)">A:</b> '+(A.join(', ')||'—')+'<br><b style="color:var(--b)">B:</b> '+(B.join(', ')||'—');
+});
+
+/* 2-animatsiya */
+var a2=Anim($('c2'),6,function(c,t){
+  var X=30+420*t/6;
+  c.fillStyle='#eaf6ff';c.fillRect(0,0,480,220);
+  c.fillStyle='#1b2a49';c.font='bold 13px sans-serif';c.textAlign='left';
+  c.fillText('To‘g‘ri chiziq',8,24);c.fillText('Egri chiziq',8,92);
+  c.lineWidth=3;c.strokeStyle='#ffb800';c.setLineDash([6,5]);
+  c.beginPath();c.moveTo(30,60);c.lineTo(X,60);c.stroke();c.setLineDash([]);
+  c.strokeStyle='#ff5d73';c.beginPath();
+  for(var x=30;x<=X;x+=2){var yy=150-40*Math.sin((x-30)/420*4*Math.PI);if(x===30)c.moveTo(x,yy);else c.lineTo(x,yy)}
+  c.stroke();
+  c.fillStyle='#ffb800';c.beginPath();c.arc(X,60,10,0,7);c.fill();
+  c.fillStyle='#ff5d73';c.beginPath();c.arc(X,150-40*Math.sin((X-30)/420*4*Math.PI),10,0,7);c.fill();
+});
+
+/* grafik */
+function graph(cv,ymax,f,Tm,tc,col,yl){
+  var c=cv.getContext('2d'),W=cv.width,H=cv.height,L=44,B=28,P=12,i;
+  var X=function(t){return L+(W-L-P)*t/10},Y=function(y){return H-B-(H-B-P)*y/ymax};
+  c.fillStyle='#eaf6ff';c.fillRect(0,0,W,H);
+  c.font='12px sans-serif';c.lineWidth=1;
+  for(i=0;i<=5;i++){var y=ymax*i/5;c.strokeStyle='#b7d3e8';c.beginPath();c.moveTo(L,Y(y));c.lineTo(W-P,Y(y));c.stroke();c.fillStyle='#1b2a49';c.textAlign='right';c.fillText(y,L-5,Y(y)+4)}
+  c.textAlign='center';
+  for(i=0;i<=10;i+=2)c.fillText(i,X(i),H-B+15);
+  c.strokeStyle='#1b2a49';c.lineWidth=2;c.beginPath();c.moveTo(L,P);c.lineTo(L,H-B);c.lineTo(W-P,H-B);c.stroke();
+  c.textAlign='left';c.fillText(yl,L+6,P+10);c.textAlign='right';c.fillText('t (s)',W-P,H-B-6);
+  c.lineWidth=3;c.strokeStyle=col;c.globalAlpha=0.3;c.setLineDash([5,5]);
+  c.beginPath();c.moveTo(X(0),Y(f(0)));c.lineTo(X(Tm),Y(f(Tm)));c.stroke();
+  c.globalAlpha=1;c.setLineDash([]);
+  c.beginPath();c.moveTo(X(0),Y(f(0)));c.lineTo(X(tc),Y(f(tc)));c.stroke();
+  c.fillStyle=col;c.beginPath();c.arc(X(tc),Y(f(tc)),6,0,7);c.fill();
+}
+
+/* 3-simulyatsiya */
+var vs=$('vs'),ts=$('ts');
+var a3=Anim($('c3'),6,function(c,t){
+  var v=+vs.value,T=+ts.value,s=v*t,x=30+420*s/200;
+  c.fillStyle='#eaf6ff';c.fillRect(0,0,480,130);
+  c.fillStyle='#c9dbe8';c.fillRect(30,78,420,8);
+  c.fillStyle='#1b2a49';c.font='11px sans-serif';c.textAlign='center';
+  for(var m=0;m<=200;m+=50){var tx=30+420*m/200;c.fillRect(tx-1,86,2,8);c.fillText(m+' m',tx,108)}
+  c.fillStyle='#ff5d73';c.fillRect(30,74,Math.max(0,x-30),4);
+  car(c,x+10,64,'#4da3ff');
+  c.fillStyle='#1b2a49';c.font='bold 13px sans-serif';c.textAlign='left';c.fillText('s = '+s.toFixed(1)+' m',10,22);
+  $('ro').textContent='t = '+t.toFixed(1)+' s;  s = v · t = '+v+' · '+t.toFixed(1)+' = '+s.toFixed(1)+' m';
+  graph($('gs'),200,function(q){return v*q},T,t,'#ff5d73','s (m)');
+  graph($('gv'),20,function(){return v},T,t,'#4da3ff','v (m/s)');
+});
+function upd(){
+  var v=+vs.value;$('vo').textContent=v;$('to').textContent=ts.value;
+  a3.setDur(+ts.value);a3.reset();
+  var td=$('tb').querySelectorAll('tbody td');
+  for(var i=0;i<5;i++)td[i].textContent=v*(i+1);
+}
+vs.oninput=upd;ts.oninput=upd;upd();
+
+/* tugmalar */
+var A={a1:a1,a2:a2,a3:a3};
+document.querySelectorAll('[data-a]').forEach(function(b){b.onclick=function(){A[b.dataset.a][b.dataset.act]()}});
+
+/* konvertor */
+function num(s){return parseFloat(String(s).replace(',','.'))}
+$('kmh').oninput=function(){var x=num(this.value);$('ms').value=isNaN(x)?'':+(x/3.6).toFixed(3)};
+$('ms').oninput=function(){var x=num(this.value);$('kmh').value=isNaN(x)?'':+(x*3.6).toFixed(3)};
+
+/* mustaqil masalalar */
+var P=[
+ ['Qush 12 m/s tezlik bilan 8 s uchdi. Qancha yo‘l bosdi?',96,'m','s = v · t = 12 · 8'],
+ ['Talaba 5 m/s tezlik bilan 600 m yo‘lni qancha vaqtda bosadi?',120,'s','t = s / v = 600 / 5'],
+ ['Poyezd 54 km/soat tezlik bilan ketmoqda. Bu necha m/s?',15,'m/s','54 / 3,6']
+];
+$('pr').innerHTML=P.map(function(p,i){
+  return '<div class="sol"><p><b>'+(i+1)+'-masala.</b> '+p[0]+'</p><input type="number" step="any" id="pi'+i+'" aria-label="Javob"> '+p[2]+' <button data-i="'+i+'">Tekshirish</button><p class="fb" id="pf'+i+'"></p></div>';
+}).join('');
+$('pr').onclick=function(e){
+  var b=e.target.closest('button');if(!b)return;
+  var i=+b.dataset.i,v=num($('pi'+i).value),f=$('pf'+i);
+  if(isNaN(v)){f.className='fb bad';f.textContent='Avval javobni yozing.';return}
+  if(Math.abs(v-P[i][1])<0.01){f.className='fb ok';f.textContent='✅ To‘g‘ri! '+P[i][3]+' = '+P[i][1]+' '+P[i][2]}
+  else{f.className='fb bad';f.textContent='❌ Noto‘g‘ri. Maslahat: '+P[i][3]+' ni hisoblab ko‘ring.'}
+};
+
+/* test */
+var Q=[
+ ['Qaysi harakat tekis harakat hisoblanadi?',['Jism teng vaqtlarda teng masofalarni o‘tadi','Jism tobora tezlashadi','Jism har safar to‘xtab yuradi'],0,'Tekis harakatda istalgan teng vaqt oraliqlarida bosib o‘tilgan masofalar teng bo‘ladi.'],
+ ['Trayektoriya nima?',['Jismning tezligi','Jism harakati davomida o‘tgan nuqtalar chizig‘i','Jism massasi'],1,'Trayektoriya – jismning harakat davomida qoldirgan “izi”, ya’ni o‘tgan nuqtalari chizig‘i.'],
+ ['v = 4 m/s va t = 6 s bo‘lsa, yo‘l s necha metr?',['10 m','24 m','1,5 m'],1,'s = v · t = 4 · 6 = 24 m.'],
+ ['18 km/soat necha m/s ga teng?',['5 m/s','18 m/s','64,8 m/s'],0,'km/soat ni m/s ga o‘tkazish uchun 3,6 ga bo‘lamiz: 18 / 3,6 = 5.'],
+ ['Tekis harakatda v(t) grafigi qanday ko‘rinadi?',['Og‘ma to‘g‘ri chiziq','Egri chiziq','Gorizontal to‘g‘ri chiziq'],2,'Tezlik o‘zgarmagani uchun v(t) grafigi vaqt o‘qiga parallel (gorizontal) chiziq bo‘ladi.']
+];
+var done=0,right=0;
+$('quiz').innerHTML=Q.map(function(x,i){
+  return '<div class="q" data-i="'+i+'"><p><b>'+(i+1)+'.</b> '+x[0]+'</p>'+x[1].map(function(o,j){return '<button class="opt" data-j="'+j+'">'+o+'</button>'}).join('')+'<p class="fb"></p></div>';
+}).join('');
+$('quiz').onclick=function(e){
+  var b=e.target.closest('.opt');if(!b)return;
+  var q=b.closest('.q');if(q.dataset.done)return;q.dataset.done='1';
+  var x=Q[+q.dataset.i],j=+b.dataset.j,fb=q.querySelector('.fb');
+  q.querySelectorAll('.opt')[x[2]].classList.add('right');
+  done++;
+  if(j===x[2]){right++;fb.className='fb ok';fb.textContent='✅ To‘g‘ri! '+x[3]}
+  else{b.classList.add('wrong');fb.className='fb bad';fb.textContent='❌ Noto‘g‘ri. '+x[3]}
+  $('score').textContent='Natija: '+right+' / 5'+(done===5?(right===5?' – ajoyib! 🎉':' – yana bir bor mavzuni ko‘rib chiqing.'):'');
+};
+})();
+</script>
+</body>
+</html>
