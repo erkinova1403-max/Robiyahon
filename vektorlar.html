@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Skalyar va vektor kattaliklar — 7-sinf fizika</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#eaf4ff;--card:#fff;--ink:#12263f;--rule:#fff3c4;--cv:#fbfdff;--bd:#d7e6fb;--opt:#eef4ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1a2b;--card:#17283f;--ink:#e8f1ff;--rule:#3a3414;--opt:#233a5a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif}
+header{background:#12263f;color:#fff;padding:18px 14px 12px}
+header div{max-width:860px;margin:auto}
+h1{margin:0 0 4px;font-size:clamp(20px,5.2vw,32px);line-height:1.2}
+header p{margin:0;color:#b8d0f5;font-size:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tabs button{background:#243f63;font-size:14px;padding:7px 10px}
+.tabs button.on{background:#ffc233;color:#12263f}
+main{max-width:860px;margin:auto;padding:8px 12px 30px}
+.sec{display:none}.sec.on{display:block}
+h2{font-size:clamp(19px,4.6vw,26px);margin:14px 0 4px;color:var(--c)}
+h3{margin:0 0 6px;font-size:17px}
+.card{background:var(--card);border-radius:16px;padding:14px;margin:12px 0;border-top:6px solid var(--c,#2f6bff)}
+.rule{background:var(--rule);border-radius:12px;padding:10px 14px}
+.rule p,.card p{margin:5px 0}
+canvas{width:100%;height:auto;display:block;background:var(--cv);border:2px solid var(--bd);border-radius:12px}
+canvas.drag{touch-action:none;cursor:grab}
+button{font:inherit;font-weight:bold;cursor:pointer;border:0;border-radius:10px;padding:8px 12px;color:#fff;background:#2f6bff}
+button:focus-visible,input:focus-visible{outline:3px solid #ffc233;outline-offset:2px}
+.bar,.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.bar button:nth-child(1){background:#12b76a}.bar button:nth-child(2){background:#ff9f1a}.bar button:nth-child(3){background:#ff4d4f}
+.sls label{display:flex;align-items:center;gap:8px;margin:6px 0;flex-wrap:wrap}
+.sls input{flex:1;min-width:130px}
+.sls b{min-width:64px}
+.out{margin-top:8px;padding:8px 12px;border-radius:10px;background:var(--opt);font-weight:bold}
+.on2{background:#12b76a!important}
+.pool{display:flex;flex-wrap:wrap;gap:8px;min-height:44px}
+.chip{background:#ffc233;color:#12263f;padding:8px 12px;border-radius:20px;cursor:grab;font-weight:bold;border:3px solid transparent}
+.chip.sel{border-color:#12263f}
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.box{border:3px dashed #2f6bff;border-radius:14px;padding:8px;min-height:120px}
+.box.v{border-color:#ff4d4f}
+.box button{width:100%;margin-bottom:8px}
+.box.v button{background:#ff4d4f}
+.box .chip{display:inline-block;margin:3px;cursor:default;background:#c9f5df}
+.q{margin:12px 0;padding-bottom:8px;border-bottom:1px solid var(--bd)}
+.opt{display:block;width:100%;text-align:left;margin:6px 0;background:var(--opt);color:var(--ink)}
+.opt.ok{background:#12b76a;color:#fff}.opt.no{background:#ff4d4f;color:#fff}
+.res{font-weight:bold;font-size:18px}
+.nav{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
+.nav button{background:#12263f}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .nav button{background:#2f6bff}}
+</style></head><body>
+<header><div>
+<h1>4-mavzu: Skalyar va vektor kattaliklar hamda ular ustida amallar</h1>
+<p>7-sinf fizika · Reja: shu mavzuning 4 ta bandi va xulosa</p>
+<div class="tabs" id="tabs"></div></div></header>
+<main>
+
+<section class="sec on" id="s0" style="--c:#2f6bff">
+<h2>1. Skalyar va vektor kattaliklar haqida</h2>
+<div class="card"><h3>Nazariya</h3>
+<p>Fizik kattaliklar ikki xil boʻladi. <b>Skalyar kattalik</b> faqat son qiymati bilan aniqlanadi: massa, vaqt, temperatura, yoʻl, hajm.</p>
+<p><b>Vektor kattalik</b> son qiymati va yoʻnalishi bilan aniqlanadi: kuch, tezlik, koʻchish, tezlanish.</p></div>
+<div class="card"><h3>Formula va qoidalar</h3><div class="rule">
+<p>Vektor harf ustiga strelka qoʻyib yoziladi: a⃗, F⃗, v⃗.</p>
+<p>Vektorning uzunligi (moduli): |a⃗| yoki oddiygina a.</p>
+<p>Strelkaning yoʻnalishi — vektorning yoʻnalishi.</p>
+<p><b>Yoʻl</b> — trayektoriya uzunligi (skalyar). <b>Koʻchish</b> — boshidan oxiriga yoʻnalgan vektor. Yoʻl ≥ |koʻchish|.</p></div></div>
+<div class="card"><h3>Animatsiya: yoʻl va koʻchish</h3>
+<canvas id="ca1" width="600" height="300"></canvas><div class="bar" data-a="ca1"></div></div>
+<div class="card"><h3>Simulyatsiya: skalyar yoki vektor?</h3>
+<p>Kattalikni bosib tanlang, soʻng quti tugmasini bosing (yoki sudrab tashlang).</p>
+<div class="pool" id="pool"></div>
+<div class="boxes">
+<div class="box" id="bs"><button id="btS">Skalyar</button><div></div></div>
+<div class="box v" id="bv"><button id="btV">Vektor</button><div></div></div></div>
+<div class="row"><div class="out" id="m1" style="flex:1">Boshlang!</div><button id="rs1">↺ Qaytadan</button></div></div>
+<div class="card"><h3>Test</h3><div id="q0"></div></div>
+<div class="nav"></div></section>
+
+<section class="sec" id="s1" style="--c:#ff4d4f">
+<h2>2. Vektor kattaliklarni qoʻshish va ayirish</h2>
+<div class="card"><h3>Nazariya</h3>
+<p>Bir toʻgʻri chiziqda <b>bir yoʻnalishli</b> vektorlar yigʻindisi — uzunliklar yigʻindisi, yoʻnalish oʻsha. <b>Qarama-qarshi</b> vektorlarda uzunliklar ayiriladi, natija kattasi tomonga yoʻnaladi.</p></div>
+<div class="card"><h3>Formula va qoidalar</h3><div class="rule">
+<p><b>Uchburchak qoidasi:</b> b⃗ ning boshini a⃗ ning oxiriga qoʻying. a⃗ boshidan b⃗ oxiriga yoʻnalgan vektor — yigʻindi c⃗ = a⃗ + b⃗.</p>
+<p><b>Parallelogramm qoidasi:</b> ikkala vektorni umumiy boshdan chizing, parallelogramm yasang. Umumiy boshdan chiqqan diagonal — yigʻindi.</p>
+<p><b>Ayirish:</b> a⃗ − b⃗ = a⃗ + (−b⃗). (−b⃗) — b⃗ ga teskari vektor.</p></div></div>
+<div class="card"><h3>Animatsiya: ikki usul</h3>
+<canvas id="ca2" width="600" height="320"></canvas><div class="bar" data-a="ca2"></div></div>
+<div class="card"><h3>Simulyatsiya</h3>
+<div class="row"><button id="mAdd" class="on2">a⃗ + b⃗ (qoʻshish)</button><button id="mSub">a⃗ − b⃗ (ayirish)</button></div>
+<canvas id="cs2" width="600" height="360" style="margin-top:10px"></canvas>
+<div class="sls" id="sl2"></div><div class="out" id="r2"></div></div>
+<div class="card"><h3>Test</h3><div id="q1"></div></div>
+<div class="nav"></div></section>
+
+<section class="sec" id="s2" style="--c:#12b76a">
+<h2>3. Vektorni songa koʻpaytirish va boʻlish</h2>
+<div class="card"><h3>Nazariya</h3>
+<p>Vektorni songa koʻpaytirsak, yangi vektor hosil boʻladi. Musbat songa koʻpaytirganda yoʻnalish saqlanadi, uzunlik shuncha marta oʻzgaradi. Manfiy songa koʻpaytirganda yoʻnalish teskariga oʻzgaradi.</p></div>
+<div class="card"><h3>Formula va qoidalar</h3><div class="rule">
+<p>b⃗ = k·a⃗ → |b⃗| = |k|·|a⃗|</p>
+<p>k > 0: b⃗ ↑↑ a⃗ (bir xil yoʻnalish). k < 0: b⃗ ↑↓ a⃗ (teskari).</p>
+<p>Songa boʻlish: a⃗ / n = (1/n)·a⃗.</p>
+<p>Amaliy misol: F⃗ = m·a⃗ — kuch tezlanish bilan bir yoʻnalishda.</p></div></div>
+<div class="card"><h3>Animatsiya</h3>
+<canvas id="ca3" width="600" height="300"></canvas><div class="bar" data-a="ca3"></div></div>
+<div class="card"><h3>Simulyatsiya: k·a⃗</h3>
+<canvas id="cs3" width="600" height="340"></canvas>
+<div class="sls" id="sl3"></div>
+<div class="row"><button id="d2">÷ 2</button><button id="d3">÷ 3</button><button id="m1b">× (−1)</button></div>
+<div class="out" id="r3"></div></div>
+<div class="card"><h3>Amaliy misol: F⃗ = m·a⃗</h3>
+<canvas id="cf3" width="600" height="200"></canvas>
+<div class="sls" id="sl3b"></div><div class="out" id="r3b"></div></div>
+<div class="card"><h3>Test</h3><div id="q2"></div></div>
+<div class="nav"></div></section>
+
+<section class="sec" id="s3" style="--c:#ff9f1a">
+<h2>4. Vektor kattaliklarning proyeksiyasi</h2>
+<div class="card"><h3>Nazariya</h3>
+<p>Vektor boshidan va oxiridan koordinata oʻqiga perpendikulyar tushiramiz. Perpendikulyarlar asoslari orasidagi kesma — vektorning shu oʻqdagi <b>proyeksiyasi</b>.</p></div>
+<div class="card"><h3>Formula va qoidalar</h3><div class="rule">
+<p>Belgilanishi: aₓ — Ox oʻqiga, a_y — Oy oʻqiga proyeksiya.</p>
+<p>Vektor oʻq bilan bir yoʻnalishda → proyeksiya <b>musbat</b>.</p>
+<p>Vektor oʻqqa qarama-qarshi → proyeksiya <b>manfiy</b>.</p>
+<p>Vektor oʻqqa perpendikulyar → proyeksiya <b>nolga teng</b>.</p></div></div>
+<div class="card"><h3>Animatsiya</h3>
+<canvas id="ca4" width="600" height="340"></canvas><div class="bar" data-a="ca4"></div></div>
+<div class="card"><h3>Simulyatsiya: vektor uchini suring</h3>
+<canvas id="cs4" class="drag" width="600" height="340"></canvas>
+<div class="out" id="r4"></div></div>
+<div class="card"><h3>Test</h3><div id="q3"></div></div>
+<div class="nav"></div></section>
+
+<section class="sec" id="s4" style="--c:#7a5af8">
+<h2>Xulosa</h2>
+<div class="card"><div class="rule">
+<p>• Skalyar kattalik — faqat son (massa, vaqt, yoʻl). Vektor kattalik — son va yoʻnalish (kuch, tezlik, koʻchish).</p>
+<p>• Vektorlar uchburchak yoki parallelogramm qoidasi bilan qoʻshiladi; a⃗ − b⃗ = a⃗ + (−b⃗).</p>
+<p>• Songa koʻpaytirganda uzunlik |k| marta oʻzgaradi; k &lt; 0 boʻlsa yoʻnalish teskari boʻladi.</p>
+<p>• Proyeksiya oʻq bilan bir yoʻnalishda musbat, qarama-qarshida manfiy, perpendikulyarda nol.</p></div></div>
+<div class="card"><h3>Umumiy test (5 ta savol)</h3><div id="q4"></div></div>
+<div class="nav"></div></section>
+</main>
+
+<script>
+const $=i=>document.getElementById(i),P=Math.PI,K={a:"#2f6bff",b:"#ff4d4f",r:"#12b76a",o:"#ff9f1a",k:"#12263f"};
+const g=i=>+$(i).value,cv=i=>$(i).getContext("2d"),cl=(t,a,b)=>Math.min(1,Math.max(0,(t-a)/(b-a)));
+const clr=x=>x.clearRect(0,0,600,x.canvas.height);
+function ln(x,a,b,c,d,col,w=2,dash=[]){x.strokeStyle=col;x.lineWidth=w;x.setLineDash(dash);x.beginPath();x.moveTo(a,b);x.lineTo(c,d);x.stroke();x.setLineDash([])}
+function arr(x,x1,y1,x2,y2,col,w=4,dash=[]){const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy);if(L<2)return;const h=Math.min(14,L*.6),u=Math.atan2(dy,dx);
+ln(x,x1,y1,x2-Math.cos(u)*h*.7,y2-Math.sin(u)*h*.7,col,w,dash);x.fillStyle=col;x.beginPath();x.moveTo(x2,y2);x.lineTo(x2-h*Math.cos(u-.4),y2-h*Math.sin(u-.4));x.lineTo(x2-h*Math.cos(u+.4),y2-h*Math.sin(u+.4));x.fill()}
+function tx(x,s,a,b,col="#12263f",z=16){x.fillStyle=col;x.font="bold "+z+"px Trebuchet MS,sans-serif";x.fillText(s,a,b)}
+function grid(x,U,ox,oy){const H=x.canvas.height;for(let i=ox%U;i<600;i+=U)ln(x,i,0,i,H,"#e3eefc",1);for(let j=oy%U;j<H;j+=U)ln(x,0,j,600,j,"#e3eefc",1);arr(x,8,oy,592,oy,"#5b6b82",2);arr(x,ox,H-8,ox,8,"#5b6b82",2);tx(x,"Ox",570,oy+20,"#5b6b82",14);tx(x,"Oy",ox+8,20,"#5b6b82",14)}
+const stops=[];
+function anim(id,dur,draw){const x=cv(id);let t=0,run=0,l=0;
+const f=n=>{if(!run)return;t=Math.min(1,t+(n-l)/dur);l=n;draw(x,t);if(t<1)requestAnimationFrame(f);else run=0};
+const st=()=>{if(t>=1)t=0;if(!run){run=1;l=performance.now();requestAnimationFrame(f)}};
+const b=document.querySelector('[data-a="'+id+'"]');
+b.innerHTML="<button>▶ Boshlash</button><button>⏸ Toʻxtatish</button><button>↺ Qayta boshlash</button>";
+const c=b.children;c[0].onclick=st;c[1].onclick=()=>run=0;c[2].onclick=()=>{t=0;run=0;st()};
+stops.push(()=>run=0);draw(x,0)}
+function sl(box,sp,cb){sp.forEach(([id,t,mn,mx,st,v,u])=>{const l=document.createElement("label");l.innerHTML=t+' <input type="range" id="'+id+'" min="'+mn+'" max="'+mx+'" step="'+st+'" value="'+v+'"> <b></b>';const i=l.querySelector("input"),o=l.querySelector("b"),up=()=>o.textContent=i.value+u;i.addEventListener("input",()=>{up();cb()});up();$(box).appendChild(l)})}
+function quiz(id,qs,fin){let n=0,ok=0;const box=$(id),res=document.createElement("p");res.className="res";
+qs.forEach((q,i)=>{const d=document.createElement("div");d.className="q";d.innerHTML="<p><b>"+(i+1)+". "+q[0]+"</b></p>";const f=document.createElement("p");
+q[1].forEach((o,j)=>{const b=document.createElement("button");b.className="opt";b.textContent=o;b.onclick=()=>{if(d.dataset.d)return;d.dataset.d=1;n++;const y=j==q[2];ok+=y;b.classList.add(y?"ok":"no");if(!y)d.querySelectorAll(".opt")[q[2]].classList.add("ok");f.textContent=(y?"✅ Toʻgʻri! ":"❌ Notoʻgʻri. ")+q[3];if(fin&&n==qs.length)res.textContent="Natija: "+ok+" / "+qs.length+(ok==qs.length?" — ajoyib!":" — mavzuni yana bir bor koʻrib chiqing.")};d.appendChild(b)});
+d.appendChild(f);box.appendChild(d)});box.appendChild(res)}
+
+/* ---- 1-bo'lim ---- */
+const pt=s=>[70+440*s,170+90*Math.sin(9*s)];
+anim("ca1",7000,(x,t)=>{clr(x);const A=pt(0),B=pt(1);let L=0,p=A;
+x.strokeStyle=K.o;x.lineWidth=4;x.beginPath();x.moveTo(...A);const n=Math.floor(200*t);
+for(let i=1;i<=n;i++){const q=pt(i/200);L+=Math.hypot(q[0]-p[0],q[1]-p[1]);p=q;x.lineTo(...q)}
+const c=pt(t);L+=Math.hypot(c[0]-p[0],c[1]-p[1]);x.lineTo(...c);x.stroke();
+arr(x,A[0],A[1],c[0],c[1],K.r,5);
+x.fillStyle="#12263f";x.beginPath();x.arc(...A,6,0,2*P);x.fill();tx(x,"A",A[0]-8,A[1]-14);
+x.fillStyle=K.o;x.beginPath();x.arc(...c,9,0,2*P);x.fill();
+tx(x,"Yoʻl (skalyar) = "+(L/40).toFixed(1)+" m",14,28,K.o,17);
+tx(x,"Koʻchish s⃗ (vektor), |s⃗| = "+(Math.hypot(c[0]-A[0],c[1]-A[1])/40).toFixed(1)+" m",14,54,K.r,17);
+tx(x,"Yoʻl — trayektoriya boʻylab, koʻchish — A dan jism turgan nuqtaga toʻgʻri strelka",14,286,"#5b6b82",13)});
+
+const IT=[["Massa",0],["Kuch",1],["Vaqt",0],["Tezlik",1],["Koʻchish",1],["Temperatura",0],["Yoʻl",0],["Tezlanish",1],["Hajm",0]];
+let sel=-1,sc=0;
+function pool(){$("pool").innerHTML="";sc=0;sel=-1;$("bs").lastChild.innerHTML=$("bv").lastChild.innerHTML="";$("m1").textContent="Boshlang!";
+IT.forEach((it,i)=>{const c=document.createElement("span");c.className="chip";c.textContent=it[0];c.draggable=true;c.id="ch"+i;
+c.onclick=()=>{sel=i;document.querySelectorAll("#pool .chip").forEach(e=>e.classList.toggle("sel",e==c))};
+c.ondragstart=()=>{sel=i};$("pool").appendChild(c)})}
+function put(k){if(sel<0||!$("ch"+sel)){$("m1").textContent="Avval kattalikni tanlang.";return}
+const it=IT[sel],c=$("ch"+sel);
+if(it[1]==k){c.classList.remove("sel");c.draggable=false;c.onclick=null;(k?$("bv"):$("bs")).lastChild.appendChild(c);sc++;sel=-1;
+$("m1").textContent=sc==IT.length?"🎉 Barakalla! Hammasi toʻgʻri.":"✅ Toʻgʻri! ("+sc+"/"+IT.length+")"}
+else $("m1").textContent="❌ "+it[0]+" "+(k?"vektor emas — u skalyar.":"skalyar emas — unda yoʻnalish bor, u vektor.")}
+$("btS").onclick=()=>put(0);$("btV").onclick=()=>put(1);$("rs1").onclick=pool;
+[["bs",0],["bv",1]].forEach(([i,k])=>{$(i).ondragover=e=>e.preventDefault();$(i).ondrop=e=>{e.preventDefault();put(k)}});pool();
+quiz("q0",[["Qaysi kattalik vektor?",["Massa","Vaqt","Tezlik","Hajm"],2,"Tezlikning qiymati ham, yoʻnalishi ham bor."],
+["A dan B ga egri chiziq boʻylab borganda yoʻl va koʻchish haqida qaysi gap toʻgʻri?",["Yoʻl koʻchish modulidan har doim kichik","Yoʻl koʻchish modulidan katta yoki unga teng","Ular doim teng","Yoʻl — vektor kattalik"],1,"Egri yoʻl toʻgʻri kesmadan uzun boʻladi."]]);
+
+/* ---- 2-bo'lim ---- */
+const a2=[130,30],b2=[70,100];
+anim("ca2",8000,(x,t)=>{clr(x);const p1=cl(t,0,.2),p2=cl(t,.2,.6),p3=cl(t,.6,.9);
+[[40,280,0],[330,280,1]].forEach(([ox,oy,m])=>{const A=a2,B=b2,o=m?[0,0]:[A[0]*p2,A[1]*p2];
+if(m){ln(x,ox+B[0],oy-B[1],ox+B[0]+A[0]*p2,oy-B[1]-A[1]*p2,K.a,2,[6,5]);ln(x,ox+A[0],oy-A[1],ox+A[0]+B[0]*p2,oy-A[1]-B[1]*p2,K.b,2,[6,5])}
+arr(x,ox,oy,ox+A[0]*p1,oy-A[1]*p1,K.a,4);
+arr(x,ox+o[0],oy-o[1],ox+o[0]+B[0]*p1,oy-o[1]-B[1]*p1,K.b,4);
+if(p1>.6){tx(x,"a⃗",ox+A[0]/2,oy-A[1]/2+22,K.a,18);tx(x,"b⃗",ox+o[0]+B[0]/2+10,oy-o[1]-B[1]/2,K.b,18)}
+arr(x,ox,oy,ox+(A[0]+B[0])*p3,oy-(A[1]+B[1])*p3,K.r,6);
+if(p3>.9)tx(x,"c⃗ = a⃗ + b⃗",ox+(A[0]+B[0])/2-60,oy-(A[1]+B[1])/2-10,K.r,17);
+tx(x,m?"Parallelogramm qoidasi":"Uchburchak qoidasi",ox,24,K.k,16)});
+tx(x,t<.2?"1) a⃗ va b⃗ umumiy boshdan chiziladi":t<.6?"2) Uchburchak: b⃗ a⃗ oxiriga koʻchadi. Parallelogramm: parallel chiziqlar yasaladi":"3) Boshdan oxirgi nuqtaga — yigʻindi vektor",14,316,"#5b6b82",13)});
+let m2=1;
+function s2(){const x=cv("cs2");clr(x);const O=[300,180],U=22;grid(x,U,300,180);
+const V=(l,d)=>[l*U*Math.cos(d*P/180),-l*U*Math.sin(d*P/180)],a=V(g("la"),g("aa")),b=V(g("lb"),g("ab")),nb=[b[0]*m2,b[1]*m2],c=[a[0]+nb[0],a[1]+nb[1]];
+const at=(v,col,w,dash,o=[0,0])=>arr(x,O[0]+o[0],O[1]+o[1],O[0]+o[0]+v[0],O[1]+o[1]+v[1],col,w,dash);
+at(nb,K.b,2,[6,5],a);at(a,K.a,2,[6,5],nb);if(m2<0)at(nb,K.b,3,[4,4]);
+at(b,K.b,4);at(a,K.a,4);at(c,K.r,6);
+tx(x,"a⃗",O[0]+a[0]+6,O[1]+a[1]-6,K.a,18);tx(x,"b⃗",O[0]+b[0]+6,O[1]+b[1]-6,K.b,18);tx(x,m2>0?"a⃗+b⃗":"a⃗−b⃗",O[0]+c[0]+6,O[1]+c[1]+18,K.r,18);
+$("r2").textContent="|a⃗| = "+g("la")+", |b⃗| = "+g("lb")+"  →  |c⃗| = "+(Math.hypot(...c)/U).toFixed(2)+" birlik"}
+sl("sl2",[["la","|a⃗| uzunlik",1,4,.5,3," "],["aa","a⃗ burchagi",0,360,5,20,"°"],["lb","|b⃗| uzunlik",1,4,.5,2.5," "],["ab","b⃗ burchagi",0,360,5,100,"°"]],s2);
+$("mAdd").onclick=()=>{m2=1;$("mAdd").classList.add("on2");$("mSub").classList.remove("on2");s2()};
+$("mSub").onclick=()=>{m2=-1;$("mSub").classList.add("on2");$("mAdd").classList.remove("on2");s2()};s2();
+quiz("q1",[["Bir yoʻnalishli 3 birlik va 4 birlik vektorlar yigʻindisining moduli necha?",["1","7","5","12"],1,"Bir yoʻnalishda uzunliklar qoʻshiladi: 3 + 4 = 7."],
+["Qarama-qarshi yoʻnalgan 5 va 2 birlikli vektorlar yigʻindisi qanday?",["7 birlik","10 birlik","3 birlik, kattasi tomonga","0"],2,"5 − 2 = 3, yoʻnalish kattasi tomonga."],
+["a⃗ − b⃗ nimaga teng?",["a⃗ + b⃗","a⃗ + (−b⃗)","b⃗ − a⃗","−a⃗ − b⃗"],1,"Ayirish — teskari vektorni qoʻshish."]]);
+
+/* ---- 3-bo'lim ---- */
+anim("ca3",9000,(x,t)=>{clr(x);const O=[300,170],th=25*P/180,L0=70,ph=Math.min(3,Math.floor(t*4)),u=t*4-ph;let k,len,ang=0,cap;
+if(ph==0){k=1+u;len=k;cap="k > 1: vektor cho‘ziladi, yo‘nalish o‘sha"}else if(ph==1){k=2-1.5*u;len=k;cap="0 < k < 1: vektor qisqaradi, yo‘nalish o‘sha"}
+else if(ph==2){k=.5-1.5*u;len=.5+.5*u;ang=P*u;cap="k manfiy bo‘lmoqda: vektor aylanib teskari yo‘nalishga o‘tadi"}else{k=-1-u;len=1+u;ang=P;cap="k < 0: uzunlik |k| marta, yo‘nalish teskari"}
+arr(x,...O,O[0]+L0*Math.cos(th),O[1]-L0*Math.sin(th),K.a,3,[6,5]);
+const d=th+ang;arr(x,...O,O[0]+len*L0*Math.cos(d),O[1]-len*L0*Math.sin(d),K.r,6);
+tx(x,"a⃗",O[0]+L0*Math.cos(th)+6,O[1]-L0*Math.sin(th)-8,K.a,18);
+tx(x,"k = "+k.toFixed(2),14,30,K.r,20);tx(x,cap.replace(/‘/g,"ʻ"),14,285,"#5b6b82",14)});
+function s3(){const x=cv("cs3");clr(x);const O=[300,170],U=30;grid(x,U,300,170);const k=g("k"),c=Math.cos(25*P/180),s=Math.sin(25*P/180),a=[3*U*c,-3*U*s];
+arr(x,...O,O[0]+k*a[0],O[1]+k*a[1],K.r,7);arr(x,...O,O[0]+a[0],O[1]+a[1],K.a,4);
+tx(x,"a⃗",O[0]+a[0]+6,O[1]+a[1]-8,K.a,18);tx(x,"k·a⃗",O[0]+k*a[0]+8,O[1]+k*a[1]+20,K.r,18);
+$("r3").textContent="k = "+k+"  |  |k·a⃗| = "+(Math.abs(k)*3).toFixed(2)+" birlik  |  "+(k>0?"yoʻnalish a⃗ bilan bir xil":k<0?"yoʻnalish a⃗ ga teskari":"nol vektor, yoʻnalishi yoʻq")}
+sl("sl3",[["k","k = ",-3,3,.01,1.5,""]],s3);
+$("d2").onclick=()=>{$("k").value=.5;$("k").dispatchEvent(new Event("input"))};
+$("d3").onclick=()=>{$("k").value=.33;$("k").dispatchEvent(new Event("input"))};
+$("m1b").onclick=()=>{$("k").value=-1;$("k").dispatchEvent(new Event("input"))};s3();
+function f3(){const x=cv("cf3");clr(x);const m=g("fm"),a=g("fa");
+x.fillStyle=K.o;x.fillRect(20,60,70,60);tx(x,m+" kg",32,97,"#fff",18);
+arr(x,110,50,110+a*40,50,K.a,5);tx(x,"a⃗ = "+a+" m/s²",110,35,K.a,16);
+arr(x,110,140,110+m*a*16,140,K.r,7);tx(x,"F⃗ = "+m*a+" N",110,170,K.r,16);
+$("r3b").textContent="F = m·a = "+m+" kg · "+a+" m/s² = "+m*a+" N; F⃗ va a⃗ bir xil yoʻnalishda"}
+sl("sl3b",[["fm","m massa",1,5,1,2," kg"],["fa","a tezlanish",1,3,.5,2," m/s²"]],f3);f3();
+quiz("q2",[["a⃗ vektorni (−2) ga koʻpaytirsak nima boʻladi?",["Uzunlik 2 marta ortadi, yoʻnalish oʻsha","Uzunlik 2 marta ortadi, yoʻnalish teskari","Uzunlik 2 marta kamayadi, yoʻnalish teskari","Faqat yoʻnalish oʻzgaradi"],1,"|−2| = 2 marta uzunroq, minus — teskari yoʻnalish."],
+["6 birlikli vektorni 3 ga boʻlsak:",["2 birlik, yoʻnalish oʻzgarmaydi","2 birlik, yoʻnalish teskari","18 birlik","3 birlik"],0,"3 ga boʻlish — 1/3 ga koʻpaytirish."]]);
+
+/* ---- 4-bo'lim ---- */
+anim("ca4",9000,(x,t)=>{clr(x);const M=(u,v)=>[300+u,230-v];arr(x,10,230,590,230,"#5b6b82",2);arr(x,300,335,300,8,"#5b6b82",2);tx(x,"Ox",565,250,"#5b6b82",15);tx(x,"Oy",310,22,"#5b6b82",15);
+const A=[-90,30],B=[120,120],s1=cl(t,0,.2),s2=cl(t,.2,.4),s3=cl(t,.4,.55),s4=cl(t,.55,.75),s5=cl(t,.75,.9);
+const pA=M(...A),pB=M(...B),e=[pA[0]+(pB[0]-pA[0])*s1,pA[1]+(pB[1]-pA[1])*s1];
+ln(x,pA[0],pA[1],pA[0],pA[1]+(230-pA[1])*s2,"#5b6b82",2,[5,4]);ln(x,pB[0],pB[1],pB[0],pB[1]+(230-pB[1])*s2,"#5b6b82",2,[5,4]);
+ln(x,pA[0],230,pA[0]+(pB[0]-pA[0])*s3,230,K.r,9);
+ln(x,pA[0],pA[1],pA[0]+(300-pA[0])*s4,pA[1],"#5b6b82",2,[5,4]);ln(x,pB[0],pB[1],pB[0]+(300-pB[0])*s4,pB[1],"#5b6b82",2,[5,4]);
+ln(x,300,pA[1],300,pA[1]+(pB[1]-pA[1])*s5,K.o,9);
+arr(x,...pA,...e,K.a,4);if(s1>0){tx(x,"boshi",pA[0]-40,pA[1]-10,K.a,14)}if(s1>=1)tx(x,"oxiri",pB[0]+8,pB[1]-8,K.a,14);
+if(s3>=1)tx(x,"aₓ = +7",pA[0]+60,262,K.r,16);if(s5>=1)tx(x,"a_y = +3",312,pA[1]+(pB[1]-pA[1])/2+5,K.o,16);
+tx(x,t<.2?"1) Vektor chiziladi":t<.55?"2) Boshi va oxiridan Ox ga perpendikulyarlar — proyeksiya kesmasi":"3) Xuddi shunday Oy oʻqiga proyeksiya",12,330,"#5b6b82",13)});
+let P4=[4,3];
+function s4(){const x=cv("cs4"),U=30,ex=300+P4[0]*U,ey=180-P4[1]*U;clr(x);grid(x,U,300,180);
+const cx=P4[0]>0?K.r:P4[0]<0?K.o:"#999",cy=P4[1]>0?K.r:P4[1]<0?K.o:"#999";
+ln(x,ex,ey,ex,180,"#5b6b82",2,[5,4]);ln(x,ex,ey,300,ey,"#5b6b82",2,[5,4]);ln(x,300,180,ex,180,cx,9);ln(x,300,180,300,ey,cy,9);
+arr(x,300,180,ex,ey,K.a,4);x.fillStyle="#ffc233";x.strokeStyle=K.a;x.lineWidth=3;x.beginPath();x.arc(ex,ey,11,0,2*P);x.fill();x.stroke();
+tx(x,"a⃗",ex+14,ey-12,K.a,18);
+const w=v=>v>0?"musbat":v<0?"manfiy":"nol",sg=v=>(v>0?"+":v<0?"−":"")+Math.abs(v);
+$("r4").innerHTML="a<sub>x</sub> = "+sg(P4[0])+" ("+w(P4[0])+") &nbsp; a<sub>y</sub> = "+sg(P4[1])+" ("+w(P4[1])+")"}
+const c8=$("cs4");let dr=0;
+const mv=e=>{const r=c8.getBoundingClientRect(),px=(e.clientX-r.left)*600/r.width,py=(e.clientY-r.top)*340/r.height;P4=[Math.max(-9,Math.min(9,Math.round((px-300)/30))),Math.max(-5,Math.min(5,Math.round((180-py)/30)))];s4()};
+c8.onpointerdown=e=>{dr=1;c8.setPointerCapture(e.pointerId);mv(e)};c8.onpointermove=e=>dr&&mv(e);c8.onpointerup=()=>dr=0;s4();
+quiz("q3",[["Vektor Ox oʻqiga perpendikulyar boʻlsa, uning Ox dagi proyeksiyasi:",["musbat","manfiy","nolga teng","vektor uzunligiga teng"],2,"Perpendikulyarning boshi va oxiri oʻqda bir nuqtaga tushadi."],
+["Vektor Ox oʻqiga qarama-qarshi yoʻnalgan. Proyeksiya ishorasi:",["musbat","manfiy","nol","aniqlab boʻlmaydi"],1,"Qarama-qarshi yoʻnalishda proyeksiya manfiy."]]);
+
+/* ---- Xulosa ---- */
+quiz("q4",[["Qaysi kattalik skalyar?",["Kuch","Tezlanish","Temperatura","Koʻchish"],2,"Temperaturaning yoʻnalishi yoʻq."],
+["Ikki vektor qaysi qoidalar bilan qoʻshiladi?",["Faqat uchburchak","Uchburchak va parallelogramm","Faqat toʻgʻri chiziqda","Qoidasi yoʻq"],1,"Ikkala qoida bir xil natija beradi."],
+["m = 2 kg, a = 3 m/s². F⃗ qanday?",["5 N, a⃗ ga teskari","6 N, a⃗ bilan bir yoʻnalishda","6 N, a⃗ ga teskari","1,5 N"],1,"F = m·a = 6 N, yoʻnalish a⃗ bilan bir xil."],
+["Vektor uchi (−4; 3) nuqtada, boshi koordinata boshida. aₓ nechaga teng?",["+4","+3","−4","−3"],2,"Vektor Ox ga qarama-qarshi, shuning uchun manfiy: −4."],
+["Jism aylana boʻylab bir marta toʻliq aylanib, boshlangʻich nuqtaga qaytdi. Koʻchish?",["Aylana uzunligiga teng","Nolga teng","Radiusga teng","Diametrga teng"],1,"Boshi va oxiri bir nuqta, koʻchish vektori nol."]],true);
+
+/* ---- Navigatsiya ---- */
+const T=["1. Skalyar va vektor","2. Qoʻshish, ayirish","3. Koʻpaytirish, boʻlish","4. Proyeksiya","Xulosa va test"];
+function show(i){stops.forEach(f=>f());document.querySelectorAll(".sec").forEach((s,j)=>s.classList.toggle("on",i==j));document.querySelectorAll(".tabs button").forEach((b,j)=>b.classList.toggle("on",i==j));scrollTo(0,0)}
+T.forEach((t,i)=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>show(i);$("tabs").appendChild(b)});
+document.querySelectorAll(".nav").forEach((n,i)=>{const p=document.createElement("button"),q=document.createElement("button");p.textContent="← Oldingi";q.textContent="Keyingi →";p.onclick=()=>show(i-1);q.onclick=()=>show(i+1);if(i>0)n.appendChild(p);else n.appendChild(document.createElement("span"));if(i<4)n.appendChild(q)});
+document.querySelector(".tabs button").classList.add("on");
+</script></body></html>
